@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>吴晨光的个人博客</title>
+  <title>mobx案例学习笔记 | 吴晨光的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="吴晨光的个人博客">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="一、mobx 介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mobx案例学习笔记">
+<meta property="og:url" content="http://example.com/2022/01/17/mobx%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="吴晨光的个人博客">
+<meta property="og:description" content="一、mobx 介绍">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-17T13:54:23.000Z">
+<meta property="article:modified_time" content="2022-02-20T15:27:19.677Z">
 <meta property="article:author" content="吴晨光">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="吴晨光的个人博客" type="application/atom+xml">
@@ -142,16 +147,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-mobx案例学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-mobx案例学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/17/mobx%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">mobx案例学习笔记</a>
+    <h1 class="article-title" itemprop="name">
+      mobx案例学习笔记
     </h1>
   
 
@@ -164,12 +167,70 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、mobx-介绍"><a href="#一、mobx-介绍" class="headerlink" title="一、mobx 介绍"></a>一、mobx 介绍</h1>
-        
-          <a class="article-more-a" href="/2022/01/17/mobx%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">more >></a>
-        
+        <h1 id="一、mobx-介绍"><a href="#一、mobx-介绍" class="headerlink" title="一、mobx 介绍"></a>一、mobx 介绍</h1><span id="more"></span>
+
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>一个可以和 react 配合密切的<strong>集中状态管理工具</strong>。通过运用透明的函数式响应编程，使状态管理变得简单和可扩展。</p>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><p>1.<strong>简单</strong></p>
+<p>编写无模板的己见代码来精准描述你的意图</p>
+<p>2.<strong>轻松实现最优渲染</strong></p>
+<p>依赖自动追踪最小渲染优化</p>
+<p>3.<strong>架构自由</strong></p>
+<p>4.<strong>可移植</strong></p>
+<p>可移植，可测试</p>
+<h1 id="二、mobx-基础使用"><a href="#二、mobx-基础使用" class="headerlink" title="二、mobx 基础使用"></a>二、mobx 基础使用</h1><h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><p>1.使用 create-react-app 初始化 react 项目</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app mobx-react-app</span><br></pre></td></tr></table></figure>
+
+<p>说明：create-react-app 是用来创建 react 工程化工具的命令，mobx-react-app 是项目名称目录</p>
+<p>2.安装 mobx 和 mobx-react-lite</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add mobx mobx-react-lite</span><br></pre></td></tr></table></figure>
+
+<p>说明：mobx 是核心工具包，mobx-react-lite 是 mobx 和 react 配合时的包，<strong>注意它只能用于函数式组件</strong>。</p>
+<h2 id="整体说明"><a href="#整体说明" class="headerlink" title="整体说明"></a>整体说明</h2><p>1.<strong>代码组织</strong></p>
+<ul>
+<li>store 独立于组件存在，不和任何组件绑定</li>
+<li>store 中的数据可以再多个组件中共享，并提供数据同步</li>
+</ul>
+<p>2.<strong>实现步骤</strong></p>
+<ul>
+<li>初始化 mobx</li>
+<li>链接 React</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>1.counterStore.js <strong>定义 store 及 action</strong></p>
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//mobx相关操作</span><br><span class="line">//1.定义数据 2.响应式处理 3.定义action 4.实例化并且导出</span><br><span class="line">import &#123; makeAutoObservable &#125; from &#x27;mobx&#x27;;</span><br><span class="line"></span><br><span class="line">class Counter &#123;</span><br><span class="line">    //定义数据</span><br><span class="line">    count = 0;</span><br><span class="line">    //响应式处理</span><br><span class="line">    constructor() &#123;</span><br><span class="line">        makeAutoObservable(this);</span><br><span class="line">    &#125;</span><br><span class="line">    //定义action函数</span><br><span class="line">    addCount = () =&gt; &#123;</span><br><span class="line">        this.count++;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//实例化</span><br><span class="line">const counterStore = new Counter();</span><br><span class="line"></span><br><span class="line">export default counterStore;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>2.App.js <strong>父组件引入 store 并使用</strong></p>
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//导入counterStore</span><br><span class="line">import counterStore from &#x27;./store/counterStore&#x27;;</span><br><span class="line">import listStore from &#x27;./store/listStore&#x27;;</span><br><span class="line">import &#123; observer &#125; from &#x27;mobx-react-lite&#x27;;</span><br><span class="line">import Test from &#x27;./Test&#x27;;</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">            &lt;button onClick=&#123;counterStore.addCount&#125;&gt;&#123;counterStore.count&#125;&lt;/button&gt;</span><br><span class="line">            &lt;button onClick=&#123;listStore.addList&#125;&gt;修改&lt;/button&gt;</span><br><span class="line">            &lt;Test&gt;&lt;/Test&gt;</span><br><span class="line">            &#123;/* 原数组 */&#125;</span><br><span class="line">            &#123;listStore.list.map((item) =&gt; (</span><br><span class="line">                &lt;li&gt;&#123;item&#125;&lt;/li&gt;</span><br><span class="line">            ))&#125;</span><br><span class="line">            &lt;br /&gt;</span><br><span class="line">            &#123;/* 新数组 计算得到的 */&#125;</span><br><span class="line">            &#123;listStore.filterList.map((item) =&gt; (</span><br><span class="line">                &lt;li&gt;&#123;item&#125;&lt;/li&gt;</span><br><span class="line">            ))&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line">//使用observer方法包裹组件，使得可以响应式更新数据</span><br><span class="line">//只能用于函数组件</span><br><span class="line">export default observer(App);</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>3.Test.js <strong>兄弟组件使用 mobx 中的数据</strong></p>
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import counterStore from &#x27;./store/counterStore&#x27;;</span><br><span class="line">const Test = () =&gt; &#123;</span><br><span class="line">    return &lt;div&gt;test count:&#123;counterStore.count&#125;&lt;/div&gt;;</span><br><span class="line">&#125;;</span><br><span class="line">//因为与App组件是被调用的父子组件关系，所以这里可以observer方法包裹</span><br><span class="line">//若是兄弟关系，则必须加上observer</span><br><span class="line">//为了方便，最好还是加上</span><br><span class="line">export default Test;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>4.listStore.js <strong>使用计算属性</strong></p>
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//计算属性</span><br><span class="line">import &#123; computed, makeAutoObservable &#125; from &#x27;mobx&#x27;;</span><br><span class="line"></span><br><span class="line">class ListStore &#123;</span><br><span class="line">    //数据 原数组</span><br><span class="line">    list = [1, 2, 3, 4, 5, 6];</span><br><span class="line">    //响应式处理</span><br><span class="line">    constructor() &#123;</span><br><span class="line">        makeAutoObservable(this, &#123;</span><br><span class="line">            filterList: computed, //做一个标记 告诉mobx这个属性是一个计算属性</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    //计算属性 运用类中的getters原理</span><br><span class="line">    get filterList() &#123;</span><br><span class="line">        return this.list.filter((item) =&gt; item &gt; 2);</span><br><span class="line">    &#125;</span><br><span class="line">    //action方法</span><br><span class="line">    addList = () =&gt; &#123;</span><br><span class="line">        this.list.push(7, 8, 9);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">const listStore = new ListStore();</span><br><span class="line">export default listStore;</span><br></pre></td></tr></table></figure>
+</code></pre>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -189,16 +250,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/17/mobx%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/01/17/mobx%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/12/25/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">TypeScript学习文档(2)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -218,225 +338,14 @@
 
 
 
-
   
-    <article id="post-TypeScript学习文档-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/25/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-2/">TypeScript学习文档(2)</a>
-    </h1>
   
 
-        
-        <a href="/2021/12/25/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-2/" class="archive-article-date">
-  	<time datetime="2021-12-25T08:23:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第二章-面向对象"><a href="#第二章-面向对象" class="headerlink" title="第二章 面向对象"></a>第二章 面向对象</h1>
-        
-          <a class="article-more-a" href="/2021/12/25/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/25/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-TypeScript学习文档-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/">TypeScript学习文档(1)</a>
-    </h1>
   
 
-        
-        <a href="/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/" class="archive-article-date">
-  	<time datetime="2021-12-19T03:44:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第一章-快速入门"><a href="#第一章-快速入门" class="headerlink" title="第一章 快速入门"></a>第一章 快速入门</h1>
-        
-          <a class="article-more-a" href="/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/18/hello-world/">Hello World</a>
-    </h1>
   
 
-        
-        <a href="/2021/06/18/hello-world/" class="archive-article-date">
-  	<time datetime="2021-06-18T00:35:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post.
-        
-          <a class="article-more-a" href="/2021/06/18/hello-world/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/18/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -459,8 +368,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
