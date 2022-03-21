@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、命令">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-22T11:52:57.000Z">
-<meta property="article:modified_time" content="2022-03-17T15:14:01.162Z">
+<meta property="article:modified_time" content="2022-03-21T15:41:26.441Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -168,11 +168,30 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="一、命令"><a href="#一、命令" class="headerlink" title="一、命令"></a>一、命令</h1><span id="more"></span>
-<p>1.清除缓存文件 (db.json) 和已生成的静态文件 (public)。<br>      <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
+<p>1.清除缓存文件 (db.json) 和已生成的静态文件 (public)。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
 <p>2.新建一篇文章。去source文件夹下的，_post文件下去编辑。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure></p>
 <p>3.生成静态文件。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate=&gt;(hexo g)</span><br></pre></td></tr></table></figure></p>
 <p>4.本地网站预览效果,热部署。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server=&gt;(hexo s)</span><br></pre></td></tr></table></figure></p>
 <p>5.将本地的文件推送到github上。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy=&gt;(hexo d)</span><br></pre></td></tr></table></figure></p>
+<h1 id="二、博客书写"><a href="#二、博客书写" class="headerlink" title="二、博客书写"></a>二、博客书写</h1><p>1.插入图片</p>
+<p>将图片统一放在<code>source/img</code>文件夹中，通过markdown语法访问它们。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/img/1.png&quot; alt=&quot;1&quot; style=&quot;zoom:75%;&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、参考资料"><a href="#三、参考资料" class="headerlink" title="三、参考资料"></a>三、参考资料</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/gdutxiaoxu/article/details/53576018?ops_request_misc=%7B%22request_id%22:%22164511016616780264052944%22,%22scm%22:%2220140713.130102334.pc_all.%22%7D&request_id=164511016616780264052944&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~hot_rank-1-53576018.pc_search_result_control_group&utm_term=hexo+++githubpages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2&spm=1018.2226.3001.4187">手把手教你用Hexo+Github 搭建属于自己的博客_徐公，微信公众号同名-CSDN博客_hexo搭建github博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.imooc.com/article/16054">hexo + githubpages搭建个人博客_慕课手记</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/f2315895270/article/details/91355552">Hexo博客搭建问题_f2315895270的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30055773/article/details/103095348?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&utm_relevant_index=4">Hexo个人博客搭建(Yilia主题)_康__的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43864927/article/details/106967183?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.pc_relevant_default&spm=1001.2101.3001.4242.1&utm_relevant_index=2">Hexo个人博客之yilia主题的安装和配置_我真有起床气的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43623082/article/details/103600106?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-5.pc_relevant_default&spm=1001.2101.3001.4242.4&utm_relevant_index=7">hexo博客配置yilia主题_Error 0的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lynnbest/article/details/79845944?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_default&utm_relevant_index=1">Hexo yilia 主题一揽子使用方案_YunShell-CSDN博客_hexo yilia主题</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.html.cn/qa/css3/14956.html">hexo不加载css怎么解决 - html中文网</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34243930/article/details/102557949?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.pc_relevant_default&spm=1001.2101.3001.4242.1&utm_relevant_index=3">用Github Pages+Hexo搭建博客之(一)搭建Github Pages+Hexo+部署到GitHub服务器 #解决hexo d部署报错 #解决css,js文件(网页样式图片)加载不出来_夏普通-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42971942/article/details/88623749">【报错】hexo 部署到 github 上，css、js 文件加载不出来怎么办_sparks42的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41287260/article/details/97693850">Hexo4.扩展主题的个性化设置-Hexo(yilia)+GitHub Pages搭建个人博客系列文章_荷塘月色-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Monster_RL/article/details/112292045">解决 hexo yilia主题作者名字不显示问题_Monster_RL的博客-CSDN博客_hexo不显示名字</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41599858/article/details/104805987?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4.pc_relevant_default&utm_relevant_index=7">【Hexo搭建个人博客】：yilia主题配置(四) - 分类管理_Alfred的博客-CSDN博客_yilia分类</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44777549/article/details/102881797?spm=1001.2101.3001.6650.13&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-13.pc_relevant_aa&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-13.pc_relevant_aa&utm_relevant_index=17">Hexo-yilia个人博客配置_yangyangpython的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25560423/article/details/53785411?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_aa&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_aa&utm_relevant_index=1">hexo 新建一篇文章给它添加分类和标签:_Updating!-CSDN博客</a></p>
 
       
 
