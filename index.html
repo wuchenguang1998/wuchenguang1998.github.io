@@ -372,6 +372,88 @@
 
 
   
+    <article id="post-React-Hooks备忘录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/">React Hooks备忘录</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/" class="archive-article-date">
+  	<time datetime="2021-12-10T12:28:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、useState"><a href="#一、useState" class="headerlink" title="一、useState"></a>一、useState</h1><p>声明、读取：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &#x27;react&#x27;;</span><br><span class="line">function Example()&#123;</span><br><span class="line">    const [ name , setName ] = useState(&#x27;wcg&#x27;);</span><br><span class="line">    return (</span><br><span class="line">            &lt;p&gt;我叫&#123;name&#125;,是一名前端工程师&lt;/p&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">export default Example;</span><br></pre></td></tr></table></figure>
+
+<p>使用(修改):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;()=&gt;&#123;setName(&#x27;wuchenguang&#x27;)&#125;&#125;&gt;click me&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、useEffect"><a href="#二、useEffect" class="headerlink" title="二、useEffect"></a>二、useEffect</h1><p>调用及解绑副作用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(()=&gt;&#123;</span><br><span class="line">        console.log(&#x27;渲染了&#x27;);</span><br><span class="line">        return ()=&gt;&#123;</span><br><span class="line">            console.log(&#x27;解绑了&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,[])</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、useContext跨组件层级传值"><a href="#三、useContext跨组件层级传值" class="headerlink" title="三、useContext跨组件层级传值"></a>三、useContext跨组件层级传值</h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vue多页面项目编译优化笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
