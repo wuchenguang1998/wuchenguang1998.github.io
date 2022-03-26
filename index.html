@@ -392,16 +392,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、useState"><a href="#一、useState" class="headerlink" title="一、useState"></a>一、useState</h1><p>声明、读取：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &#x27;react&#x27;;</span><br><span class="line">function Example()&#123;</span><br><span class="line">    const [ name , setName ] = useState(&#x27;wcg&#x27;);</span><br><span class="line">    return (</span><br><span class="line">            &lt;p&gt;我叫&#123;name&#125;,是一名前端工程师&lt;/p&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">export default Example;</span><br></pre></td></tr></table></figure>
-
-<p>使用(修改):</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;()=&gt;&#123;setName(&#x27;wuchenguang&#x27;)&#125;&#125;&gt;click me&lt;/button&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="二、useEffect"><a href="#二、useEffect" class="headerlink" title="二、useEffect"></a>二、useEffect</h1><p>调用及解绑副作用：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(()=&gt;&#123;</span><br><span class="line">        console.log(&#x27;渲染了&#x27;);</span><br><span class="line">        return ()=&gt;&#123;</span><br><span class="line">            console.log(&#x27;解绑了&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,[])</span><br></pre></td></tr></table></figure>
-
-<h1 id="三、useContext跨组件层级传值"><a href="#三、useContext跨组件层级传值" class="headerlink" title="三、useContext跨组件层级传值"></a>三、useContext跨组件层级传值</h1>
+        <h1 id="一、useState"><a href="#一、useState" class="headerlink" title="一、useState"></a>一、useState</h1>
+        
+          <a class="article-more-a" href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/#more">more >></a>
+        
       
 
       
