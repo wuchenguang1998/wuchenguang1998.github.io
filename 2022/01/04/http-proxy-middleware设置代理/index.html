@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、安装http-proxy-middleware">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-04T11:50:50.000Z">
-<meta property="article:modified_time" content="2022-03-29T15:57:12.483Z">
+<meta property="article:modified_time" content="2022-03-29T15:59:50.502Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -172,7 +172,7 @@
 
 <h1 id="二、创建setupProxy-js-文件"><a href="#二、创建setupProxy-js-文件" class="headerlink" title="二、创建setupProxy.js 文件"></a>二、创建setupProxy.js 文件</h1><p>在 <code>src</code> 中新建一个名为 <code>setupProxy.js</code> 的文件</p>
 <h1 id="三、编辑setupProxy-js"><a href="#三、编辑setupProxy-js" class="headerlink" title="三、编辑setupProxy.js"></a>三、编辑setupProxy.js</h1><p>示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const proxy = require(&#x27;http-proxy-middleware&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = function (app) &#123;</span><br><span class="line">    app.use(</span><br><span class="line">        proxy(&#x27;/kgsxj/&#x27;, &#123;</span><br><span class="line">            target: &#x27;http://172.xx.xxx.xxx:xxxx/&#x27;,</span><br><span class="line">            secure: false,</span><br><span class="line">            changeOrigin: true,</span><br><span class="line">        &#125;)</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const proxy = require(&#x27;http-proxy-middleware&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = function (app) &#123;</span><br><span class="line">    app.use(</span><br><span class="line">        proxy(&#x27;/kgsxj/&#x27;, &#123;          //代理路径</span><br><span class="line">            target: &#x27;http://172.xx.xxx.xxx:xxxx/&#x27;,       //重写路径</span><br><span class="line">            secure: false,</span><br><span class="line">            changeOrigin: true,</span><br><span class="line">        &#125;)</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
       
