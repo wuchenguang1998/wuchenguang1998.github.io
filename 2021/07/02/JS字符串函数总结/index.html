@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>JS字符串函数总结 | 吴晨光的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="测试123">
+  <meta name="description" content="一、基本函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS字符串函数总结">
-<meta property="og:url" content="http://example.com/2021/07/16/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:url" content="http://example.com/2021/07/02/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="吴晨光的个人博客">
-<meta property="og:description" content="测试123">
+<meta property="og:description" content="一、基本函数">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-07-16T15:46:55.000Z">
-<meta property="article:modified_time" content="2022-06-04T07:56:11.718Z">
+<meta property="article:published_time" content="2021-07-02T12:46:55.000Z">
+<meta property="article:modified_time" content="2022-06-04T13:53:11.545Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -159,16 +159,68 @@
   
 
         
-        <a href="/2021/07/16/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2021-07-16T15:46:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-16</time>
+        <a href="/2021/07/02/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2021-07-02T12:46:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>测试123</p>
+        <h1 id="一、基本函数"><a href="#一、基本函数" class="headerlink" title="一、基本函数"></a>一、基本函数</h1><span id="more"></span>
+<p>1.获取长度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;abc&#x27;.length</span><br></pre></td></tr></table></figure>
 
+<p>2.大小写转换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x27;abc&#x27;.toUpperCase();  //大写</span><br><span class="line">&#x27;ABC&#x27;.toLowerCase();  //转换成小写</span><br></pre></td></tr></table></figure>
+
+<p>3.去除空格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;abc  &#x27;.trim();  //去除空格</span><br></pre></td></tr></table></figure>
+
+<p>4.返回指定索引的字符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;abc&#x27;.charAt(1);</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、字符串截取"><a href="#二、字符串截取" class="headerlink" title="二、字符串截取"></a>二、字符串截取</h1><p>1.slice()  截取字符串，不改变原字符串。如果beginIndex为负数，会被当做strLength + beginIndex看待；endIndex同理。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.slice(beginIndex[, endIndex]);</span><br></pre></td></tr></table></figure>
+
+<p>2.substring()  提取从indexStart到indexEnd（不包括）之间的字符。</p>
+<ul>
+<li>如果indexStart等于indexEnd，substring返回一个空字符串。</li>
+<li>如果省略indexEnd，substring提取字符一直到字符串末尾。</li>
+<li>如果任一参数小于 0 或为NaN，则被当作 0。</li>
+<li>如果任一参数大于stringName.length，则被当作stringName.length。</li>
+<li>如果indexStart大于indexEnd，则substring的执行效果就像两个参数调换了一样。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.substring(indexStart[, indexEnd]);</span><br></pre></td></tr></table></figure>
+
+<p>3.substr()   返回一个字符串中从指定位置开始到指定字符数的字符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.substr(start[, length]);</span><br></pre></td></tr></table></figure>
+
+<p>4.示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">slice(1)   //从索引1开始截取</span><br><span class="line">substring(1)   //从索引1开始截取</span><br><span class="line">substr(1)   //从索引1开始截取</span><br><span class="line"></span><br><span class="line">slice(1, 3)   //截取索引1,2</span><br><span class="line">substring(1, 3)   //截取索引1,2</span><br><span class="line">substr(1, 3)   //从索引1开始，截取3个字符</span><br><span class="line"></span><br><span class="line">slice(-3)   //截取最后3个字符</span><br><span class="line">substring(-3)   //-3不起作用，从索引0开始截取</span><br><span class="line">substr(-3)   //截取最后3个字符</span><br><span class="line"></span><br><span class="line">slice(-3, -1)   //截取2个字符,从索引length-3开始</span><br><span class="line">substring(-3, -1)   //相当于substring(0, 0),无任何字符被截取</span><br><span class="line">substr(-3, 2)   //截取2个字符,从索引length-3开始</span><br><span class="line"></span><br><span class="line">substring(7, 4)  //相当于substring(4, 7)</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、字符串检索"><a href="#三、字符串检索" class="headerlink" title="三、字符串检索"></a>三、字符串检索</h1><p>1.indexOf()  返回第一次出现的指定值的索引，从 fromIndex处进行搜索。如果未找到该值，则返回 -1。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.indexOf(searchValue [, fromIndex])</span><br></pre></td></tr></table></figure>
+
+<p>2.includes()  判断一个字符串是否包含在另一个字符串中，根据情况返回布尔值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.includes(searchString[, position])</span><br></pre></td></tr></table></figure>
+
+<p>3.lastIndexOf()  指定值最后一次出现的索引，在fromIndex处从后向前搜索。如果没找到这个特定值则返回-1 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.lastIndexOf(searchValue[, fromIndex])</span><br></pre></td></tr></table></figure>
+
+<p>4.startsWith()  判断当前字符串是否以另外一个给定的子字符串开头，并根据判断结果返回布尔值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.startsWith(searchString[, position])</span><br></pre></td></tr></table></figure>
+
+<p>5.endsWIth()  判断当前字符串是否是以另外一个给定的子字符串“结尾”的，根据判断结果返回布尔值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.endsWith(searchString[, length])</span><br></pre></td></tr></table></figure>
+
+<h1 id="四、字符串替换"><a href="#四、字符串替换" class="headerlink" title="四、字符串替换"></a>四、字符串替换</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replace(&#x27;aaa&#x27;, &#x27;bbb&#x27;)  //将字符串里的aaa替换成bbb</span><br></pre></td></tr></table></figure>
+
+<h1 id="五、使用案例"><a href="#五、使用案例" class="headerlink" title="五、使用案例"></a>五、使用案例</h1><p>1.关键词匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&#x27;广告&#x27;, &#x27;销售&#x27;];</span><br><span class="line">let str = &#x27;...通过广告联系我可以打折...&#x27;;</span><br><span class="line">let isAdervertise = arr.some(item =&gt; str.includes(item));</span><br><span class="line">console.log(&#x27;是否含有违规词：&#x27;, isAdervertise);  //是否含有违规词： true</span><br></pre></td></tr></table></figure>
+
+<p>2.敏感词替换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&#x27;广告&#x27;, &#x27;销售&#x27;, &#x27;可以打折&#x27;];</span><br><span class="line">let str = &#x27;通过广告联系我可以打折&#x27;;</span><br><span class="line">let res = arr.reduce((pre, cur) =&gt; pre.replace(cur, &#x27;*&#x27;.repeat(cur.length)), str);</span><br><span class="line">console.log(res);  //通过**联系我****</span><br></pre></td></tr></table></figure>
       
 
       
@@ -258,7 +310,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/07/16/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/07/02/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -272,18 +324,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/07/06/vue%E5%A4%9A%E9%A1%B5%E9%9D%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          React Hooks备忘录
+          vue多页面项目编译优化笔记
         
       </div>
     </a>
   
   
-    <a href="/2021/07/06/vue%E5%A4%9A%E9%A1%B5%E9%9D%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">vue多页面项目编译优化笔记</div>
+    <a href="/2021/06/22/hexo%E6%93%8D%E4%BD%9C%E5%A4%87%E5%BF%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo操作备忘</div>
       <i class="icon-circle-right"></i>
     </a>
   
