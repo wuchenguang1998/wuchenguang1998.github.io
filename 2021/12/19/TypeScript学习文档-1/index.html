@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>hexo操作备忘 | 吴晨光的个人博客</title>
+  <title>TypeScript学习文档(1) | 吴晨光的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、命令">
+  <meta name="description" content="第一章 快速入门">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo操作备忘">
-<meta property="og:url" content="http://example.com/2021/06/22/hexo%E6%93%8D%E4%BD%9C%E5%A4%87%E5%BF%98/index.html">
+<meta property="og:title" content="TypeScript学习文档(1)">
+<meta property="og:url" content="http://example.com/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/index.html">
 <meta property="og:site_name" content="吴晨光的个人博客">
-<meta property="og:description" content="一、命令">
+<meta property="og:description" content="第一章 快速入门">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-06-22T11:52:57.000Z">
-<meta property="article:modified_time" content="2022-03-21T15:48:06.513Z">
+<meta property="article:published_time" content="2021-12-19T03:44:09.000Z">
+<meta property="article:modified_time" content="2022-06-05T12:28:33.639Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -153,54 +153,340 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hexo操作备忘" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-TypeScript学习文档-1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hexo操作备忘
+      TypeScript学习文档(1)
     </h1>
   
 
         
-        <a href="/2021/06/22/hexo%E6%93%8D%E4%BD%9C%E5%A4%87%E5%BF%98/" class="archive-article-date">
-  	<time datetime="2021-06-22T11:52:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-22</time>
+        <a href="/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/" class="archive-article-date">
+  	<time datetime="2021-12-19T03:44:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、命令"><a href="#一、命令" class="headerlink" title="一、命令"></a>一、命令</h1><span id="more"></span>
-<p>1.清除缓存文件 (db.json) 和已生成的静态文件 (public)。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
-<p>2.新建一篇文章。去source文件夹下的，_post文件下去编辑。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure></p>
-<p>3.生成静态文件。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate=&gt;(hexo g)</span><br></pre></td></tr></table></figure></p>
-<p>4.本地网站预览效果,热部署。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server=&gt;(hexo s)</span><br></pre></td></tr></table></figure></p>
-<p>5.将本地的文件推送到github上。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy=&gt;(hexo d)</span><br></pre></td></tr></table></figure></p>
-<h1 id="二、博客书写"><a href="#二、博客书写" class="headerlink" title="二、博客书写"></a>二、博客书写</h1><p>1.插入图片</p>
-<p>将图片统一放在<code>source/img</code>文件夹中，通过markdown语法访问它们。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/img/1.png&quot; alt=&quot;1&quot; style=&quot;zoom:75%;&quot; /&gt;</span><br></pre></td></tr></table></figure>
+        <h1 id="第一章-快速入门"><a href="#第一章-快速入门" class="headerlink" title="第一章 快速入门"></a>第一章 快速入门</h1> <span id="more"></span>
+<h2 id="0、TypeScript简介"><a href="#0、TypeScript简介" class="headerlink" title="0、TypeScript简介"></a>0、TypeScript简介</h2><ol>
+<li>TypeScript是JavaScript的超集。</li>
+<li>它对JS进行了扩展，向JS中引入了类型的概念，并添加了许多新的特性。</li>
+<li>TS代码需要通过编译器编译为JS，然后再交由JS解析器执行。</li>
+<li>TS完全兼容JS，换言之，任何的JS代码都可以直接当成JS使用。</li>
+<li>相较于JS而言，TS拥有了静态类型，更加严格的语法，更强大的功能；TS可以在代码执行前就完成代码的检查，减小了运行时异常的出现的几率；TS代码可以编译为任意版本的JS代码，可有效解决不同JS运行环境的兼容问题；同样的功能，TS的代码量要大于JS，但由于TS的代码结构更加清晰，变量类型更加明确，在后期代码的维护中TS却远远胜于JS。</li>
+</ol>
+<h2 id="1、TypeScript-开发环境搭建"><a href="#1、TypeScript-开发环境搭建" class="headerlink" title="1、TypeScript 开发环境搭建"></a>1、TypeScript 开发环境搭建</h2><ol>
+<li><p>下载Node.js</p>
+<ul>
+<li>64位：<a target="_blank" rel="noopener" href="https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi">https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi</a></li>
+<li>32位：<a target="_blank" rel="noopener" href="https://nodejs.org/dist/v14.15.1/node-v14.15.1-x86.msi">https://nodejs.org/dist/v14.15.1/node-v14.15.1-x86.msi</a></li>
+</ul>
+</li>
+<li><p>安装Node.js</p>
+</li>
+<li><p>使用npm全局安装typescript</p>
+<ul>
+<li>进入命令行</li>
+<li>输入：npm i -g typescript</li>
+</ul>
+</li>
+<li><p>创建一个ts文件</p>
+</li>
+<li><p>使用tsc对ts文件进行编译</p>
+<ul>
+<li><p>进入命令行</p>
+</li>
+<li><p>进入ts文件所在目录</p>
+</li>
+<li><p>执行命令：tsc xxx.ts</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="2、基本类型"><a href="#2、基本类型" class="headerlink" title="2、基本类型"></a>2、基本类型</h2><ul>
+<li><p>类型声明</p>
+<ul>
+<li><p>类型声明是TS非常重要的一个特点</p>
+</li>
+<li><p>通过类型声明可以指定TS中变量（参数、形参）的类型</p>
+</li>
+<li><p>指定类型后，当为变量赋值时，TS编译器会自动检查值是否符合类型声明，符合则赋值，否则报错</p>
+</li>
+<li><p>简而言之，类型声明给变量设置了类型，使得变量只能存储某种类型的值</p>
+</li>
+<li><p>语法：</p>
+<ul>
+<li><p>&#96;&#96;&#96;typescript<br>let 变量: 类型;</p>
+<p>let 变量: 类型 &#x3D; 值;</p>
+<p>function fn(参数: 类型, 参数: 类型): 类型{<br>…<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 自动类型判断</span><br><span class="line"></span><br><span class="line">  - TS拥有自动的类型判断机制</span><br><span class="line">  - 当对变量的声明和赋值是同时进行的，TS编译器会自动判断变量的类型</span><br><span class="line">  - 所以如果你的变量的声明和赋值时同时进行的，可以省略掉类型声明</span><br><span class="line"></span><br><span class="line">- 类型：</span><br><span class="line"></span><br><span class="line">  |  类型   |       例子        |              描述              |</span><br><span class="line">  | :-----: | :---------------: | :----------------------------: |</span><br><span class="line">  | number  |    1, -33, 2.5    |            任意数字            |</span><br><span class="line">  | string  | &#x27;hi&#x27;, &quot;hi&quot;, `hi`  |           任意字符串           |</span><br><span class="line">  | boolean |    true、false    |       布尔值true或false        |</span><br><span class="line">  | 字面量  |      其本身       |  限制变量的值就是该字面量的值  |</span><br><span class="line">  |   any   |         *         |            任意类型            |</span><br><span class="line">  | unknown |         *         |         类型安全的any          |</span><br><span class="line">  |  void   | 空值（undefined） |     没有值（或undefined）      |</span><br><span class="line">  |  never  |      没有值       |          不能是任何值          |</span><br><span class="line">  | object  |  &#123;name:&#x27;孙悟空&#x27;&#125;  |          任意的JS对象          |</span><br><span class="line">  |  array  |      [1,2,3]      |           任意JS数组           |</span><br><span class="line">  |  tuple  |       [4,5]       | 元组，TS新增类型，固定长度数组 |</span><br><span class="line">  |  enum   |    enum&#123;A, B&#125;     |       枚举，TS中新增类型       |</span><br><span class="line"></span><br><span class="line">- number</span><br><span class="line"></span><br><span class="line">  - ```typescript</span><br><span class="line">    let decimal: number = 6;</span><br><span class="line">    let hex: number = 0xf00d;</span><br><span class="line">    let binary: number = 0b1010;</span><br><span class="line">    let octal: number = 0o744;</span><br><span class="line">    let big: bigint = 100n;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>boolean</p>
+<ul>
+<li>&#96;&#96;&#96;typescript<br>let isDone: boolean &#x3D; false;<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- string</span><br><span class="line"></span><br><span class="line">  - ```typescript</span><br><span class="line">    let color: string = &quot;blue&quot;;</span><br><span class="line">    color = &#x27;red&#x27;;</span><br><span class="line">    </span><br><span class="line">    let fullName: string = `Bob Bobbington`;</span><br><span class="line">    let age: number = 37;</span><br><span class="line">    let sentence: string = `Hello, my name is $&#123;fullName&#125;.</span><br><span class="line">    </span><br><span class="line">    I&#x27;ll be $&#123;age + 1&#125; years old next month.`;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>字面量</p>
+<ul>
+<li><p>也可以使用字面量去指定变量的类型，通过字面量可以确定变量的取值范围</p>
+</li>
+<li><p>&#96;&#96;&#96;typescript<br>let color: ‘red’ | ‘blue’ | ‘black’;<br>let num: 1 | 2 | 3 | 4 | 5;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- any</span><br><span class="line"></span><br><span class="line">  - ```typescript</span><br><span class="line">    let d: any = 4;</span><br><span class="line">    d = &#x27;hello&#x27;;</span><br><span class="line">    d = true;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>unknown</p>
+<ul>
+<li>&#96;&#96;&#96;typescript<br>let notSure: unknown &#x3D; 4;<br>notSure &#x3D; ‘hello’;<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- void</span><br><span class="line"></span><br><span class="line">  - ```typescript</span><br><span class="line">    let unusable: void = undefined;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>never</p>
+<ul>
+<li>&#96;&#96;&#96;typescript<br>function error(message: string): never {<br>  throw new Error(message);<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- object（没啥用）</span><br><span class="line"></span><br><span class="line">  - ```typescript</span><br><span class="line">    let obj: object = &#123;&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>array</p>
+<ul>
+<li>&#96;&#96;&#96;typescript<br>let list: number[] &#x3D; [1, 2, 3];<br>let list: Array<number> &#x3D; [1, 2, 3];<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- tuple</span><br><span class="line"></span><br><span class="line">  - ```typescript</span><br><span class="line">    let x: [string, number];</span><br><span class="line">    x = [&quot;hello&quot;, 10]; </span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>enum</p>
+<ul>
+<li><p>&#96;&#96;&#96;typescript<br>enum Color {<br>  Red,<br>  Green,<br>  Blue,<br>}<br>let c: Color &#x3D; Color.Green;</p>
+<p>enum Color {<br>  Red &#x3D; 1,<br>  Green,<br>  Blue,<br>}<br>let c: Color &#x3D; Color.Green;</p>
+<p>enum Color {<br>  Red &#x3D; 1,<br>  Green &#x3D; 2,<br>  Blue &#x3D; 4,<br>}<br>let c: Color &#x3D; Color.Green;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 类型断言</span><br><span class="line"></span><br><span class="line">  - 有些情况下，变量的类型对于我们来说是很明确，但是TS编译器却并不清楚，此时，可以通过类型断言来告诉编译器变量的类型，断言有两种形式：</span><br><span class="line"></span><br><span class="line">    - 第一种</span><br><span class="line"></span><br><span class="line">      - ```typescript</span><br><span class="line">        let someValue: unknown = &quot;this is a string&quot;;</span><br><span class="line">        let strLength: number = (someValue as string).length;</span><br></pre></td></tr></table></figure>
 
-<h1 id="三、参考资料"><a href="#三、参考资料" class="headerlink" title="三、参考资料"></a>三、参考资料</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/linton1/article/details/90137367?ops_request_misc=%7B%22request_id%22:%22164387651016781685373645%22,%22scm%22:%2220140713.130102334.pc_all.%22%7D&request_id=164387651016781685373645&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-4-90137367.pc_search_result_cache&utm_term=github+page%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2&spm=1018.2226.3001.4187">详细的hexo+githubPage搭建个人博客_风的季节-CSDN博客_hexo+github</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/victoryxa/article/details/103733655?spm=1001.2101.3001.6650.12&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-12.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-12.pc_relevant_default&utm_relevant_index=22">hexo+github搭建博客(超级详细版，精细入微)_过客~励む-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/grape875499765/article/details/79017906?ops_request_misc=%7B%22request_id%22:%22164387651016781685373645%22,%22scm%22:%2220140713.130102334.pc_all.%22%7D&request_id=164387651016781685373645&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-6-79017906.pc_search_result_cache&utm_term=github+page%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2&spm=1018.2226.3001.4187">个人技术博客的选择：CSDN、博客园、简书、知乎专栏还是Github Page？_灵魂画师牧码-CSDN博客_博客园</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/gdutxiaoxu/article/details/53576018?ops_request_misc=%7B%22request_id%22:%22164511016616780264052944%22,%22scm%22:%2220140713.130102334.pc_all.%22%7D&request_id=164511016616780264052944&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~hot_rank-1-53576018.pc_search_result_control_group&utm_term=hexo+++githubpages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2&spm=1018.2226.3001.4187">手把手教你用Hexo+Github 搭建属于自己的博客_徐公，微信公众号同名-CSDN博客_hexo搭建github博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.imooc.com/article/16054">hexo + githubpages搭建个人博客_慕课手记</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/f2315895270/article/details/91355552">Hexo博客搭建问题_f2315895270的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30055773/article/details/103095348?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&utm_relevant_index=4">Hexo个人博客搭建(Yilia主题)_康__的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43864927/article/details/106967183?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.pc_relevant_default&spm=1001.2101.3001.4242.1&utm_relevant_index=2">Hexo个人博客之yilia主题的安装和配置_我真有起床气的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43623082/article/details/103600106?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-5.pc_relevant_default&spm=1001.2101.3001.4242.4&utm_relevant_index=7">hexo博客配置yilia主题_Error 0的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lynnbest/article/details/79845944?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_default&utm_relevant_index=1">Hexo yilia 主题一揽子使用方案_YunShell-CSDN博客_hexo yilia主题</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.html.cn/qa/css3/14956.html">hexo不加载css怎么解决 - html中文网</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34243930/article/details/102557949?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.pc_relevant_default&spm=1001.2101.3001.4242.1&utm_relevant_index=3">用Github Pages+Hexo搭建博客之(一)搭建Github Pages+Hexo+部署到GitHub服务器 #解决hexo d部署报错 #解决css,js文件(网页样式图片)加载不出来_夏普通-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42971942/article/details/88623749">【报错】hexo 部署到 github 上，css、js 文件加载不出来怎么办_sparks42的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41287260/article/details/97693850">Hexo4.扩展主题的个性化设置-Hexo(yilia)+GitHub Pages搭建个人博客系列文章_荷塘月色-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Monster_RL/article/details/112292045">解决 hexo yilia主题作者名字不显示问题_Monster_RL的博客-CSDN博客_hexo不显示名字</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41599858/article/details/104805987?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4.pc_relevant_default&utm_relevant_index=7">【Hexo搭建个人博客】：yilia主题配置(四) - 分类管理_Alfred的博客-CSDN博客_yilia分类</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44777549/article/details/102881797?spm=1001.2101.3001.6650.13&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-13.pc_relevant_aa&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-13.pc_relevant_aa&utm_relevant_index=17">Hexo-yilia个人博客配置_yangyangpython的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25560423/article/details/53785411?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_aa&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_aa&utm_relevant_index=1">hexo 新建一篇文章给它添加分类和标签:_Updating!-CSDN博客</a></p>
+<ul>
+<li><p>第二种</p>
+<ul>
+<li>&#96;&#96;&#96;typescript<br>let someValue: unknown &#x3D; “this is a string”;<br>let strLength: number &#x3D; (<string>someValue).length;<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">## 3、编译选项</span><br><span class="line"></span><br><span class="line">- 自动编译文件</span><br><span class="line"></span><br><span class="line">  - 编译文件时，使用 -w 指令后，TS编译器会自动监视文件的变化，并在文件发生变化时对文件进行重新编译。</span><br><span class="line"></span><br><span class="line">  - 示例：</span><br><span class="line"></span><br><span class="line">    - ```powershell</span><br><span class="line">      tsc xxx.ts -w</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>自动编译整个项目</p>
+<ul>
+<li><p>如果直接使用tsc指令，则可以自动将当前项目下的所有ts文件编译为js文件。</p>
+</li>
+<li><p>但是能直接使用tsc命令的前提时，要先在项目根目录下创建一个ts的配置文件 tsconfig.json</p>
+</li>
+<li><p>tsconfig.json是一个JSON文件，添加配置文件后，只需只需 tsc 命令即可完成对整个项目的编译</p>
+</li>
+<li><p>配置选项：</p>
+<ul>
+<li><p>include</p>
+<ul>
+<li><p>定义希望被编译文件所在的目录</p>
+</li>
+<li><p>默认值：[“**&#x2F;*“]</p>
+</li>
+<li><p>示例：</p>
+<ul>
+<li><pre><code class="json">&quot;include&quot;:[&quot;src/**/*&quot;, &quot;tests/**/*&quot;]
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    - 上述示例中，所有src目录和tests目录下的文件都会被编译</span><br><span class="line"></span><br><span class="line">- exclude</span><br><span class="line"></span><br><span class="line">  - 定义需要排除在外的目录</span><br><span class="line"></span><br><span class="line">  - 默认值：[&quot;node_modules&quot;, &quot;bower_components&quot;, &quot;jspm_packages&quot;]</span><br><span class="line"></span><br><span class="line">  - 示例：</span><br><span class="line"></span><br><span class="line">    - ```json</span><br><span class="line">      &quot;exclude&quot;: [&quot;./src/hello/**/*&quot;]</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>上述示例中，src下hello目录下的文件都不会被编译</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>extends</p>
+<ul>
+<li><p>定义被继承的配置文件</p>
+</li>
+<li><p>示例：</p>
+<ul>
+<li><pre><code class="json">&quot;extends&quot;: &quot;./configs/base&quot;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    - 上述示例中，当前配置文件中会自动包含config目录下base.json中的所有配置信息</span><br><span class="line"></span><br><span class="line">- files</span><br><span class="line"></span><br><span class="line">  - 指定被编译文件的列表，只有需要编译的文件少时才会用到</span><br><span class="line"></span><br><span class="line">  - 示例：</span><br><span class="line"></span><br><span class="line">    - ```json</span><br><span class="line">      &quot;files&quot;: [</span><br><span class="line">          &quot;core.ts&quot;,</span><br><span class="line">          &quot;sys.ts&quot;,</span><br><span class="line">          &quot;types.ts&quot;,</span><br><span class="line">          &quot;scanner.ts&quot;,</span><br><span class="line">          &quot;parser.ts&quot;,</span><br><span class="line">          &quot;utilities.ts&quot;,</span><br><span class="line">          &quot;binder.ts&quot;,</span><br><span class="line">          &quot;checker.ts&quot;,</span><br><span class="line">          &quot;tsc.ts&quot;</span><br><span class="line">        ]</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>列表中的文件都会被TS编译器所编译</p>
+</li>
+</ul>
+</li>
+<li><p>compilerOptions</p>
+<ul>
+<li><p>编译选项是配置文件中非常重要也比较复杂的配置选项</p>
+</li>
+<li><p>在compilerOptions中包含多个子选项，用来完成对编译的配置</p>
+<ul>
+<li><p>项目选项</p>
+<ul>
+<li><p>target</p>
+<ul>
+<li><p>设置ts代码编译的目标版本</p>
+</li>
+<li><p>可选值：</p>
+<ul>
+<li>ES3（默认）、ES5、ES6&#x2F;ES2015、ES7&#x2F;ES2016、ES2017、ES2018、ES2019、ES2020、ESNext</li>
+</ul>
+</li>
+<li><p>示例：</p>
+<ul>
+<li>&#96;&#96;&#96;json<br>“compilerOptions”: {<br>“target”: “ES6”<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    - 如上设置，我们所编写的ts代码将会被编译为ES6版本的js代码</span><br><span class="line"></span><br><span class="line">- lib</span><br><span class="line"></span><br><span class="line">  - 指定代码运行时所包含的库（宿主环境）</span><br><span class="line"></span><br><span class="line">  - 可选值：</span><br><span class="line"></span><br><span class="line">    - ES5、ES6/ES2015、ES7/ES2016、ES2017、ES2018、ES2019、ES2020、ESNext、DOM、WebWorker、ScriptHost ......</span><br><span class="line"></span><br><span class="line">  - 示例：</span><br><span class="line"></span><br><span class="line">    - ```json</span><br><span class="line">      &quot;compilerOptions&quot;: &#123;</span><br><span class="line">          &quot;target&quot;: &quot;ES6&quot;,</span><br><span class="line">          &quot;lib&quot;: [&quot;ES6&quot;, &quot;DOM&quot;],</span><br><span class="line">          &quot;outDir&quot;: &quot;dist&quot;,</span><br><span class="line">          &quot;outFile&quot;: &quot;dist/aa.js&quot;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>module</p>
+<ul>
+<li><p>设置编译后代码使用的模块化系统</p>
+</li>
+<li><p>可选值：</p>
+<ul>
+<li>CommonJS、UMD、AMD、System、ES2020、ESNext、None</li>
+</ul>
+</li>
+<li><p>示例：</p>
+<ul>
+<li><pre><code class="typescript">&quot;compilerOptions&quot;: &#123;
+    &quot;module&quot;: &quot;CommonJS&quot;
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- outDir</span><br><span class="line"></span><br><span class="line">  - 编译后文件的所在目录</span><br><span class="line"></span><br><span class="line">  - 默认情况下，编译后的js文件会和ts文件位于相同的目录，设置outDir后可以改变编译后文件的位置</span><br><span class="line"></span><br><span class="line">  - 示例：</span><br><span class="line"></span><br><span class="line">    - ```json</span><br><span class="line">      &quot;compilerOptions&quot;: &#123;</span><br><span class="line">          &quot;outDir&quot;: &quot;dist&quot;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>设置后编译后的js文件将会生成到dist目录</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>outFile</p>
+<ul>
+<li><p>将所有的文件编译为一个js文件</p>
+</li>
+<li><p>默认会将所有的编写在全局作用域中的代码合并为一个js文件，如果module制定了None、System或AMD则会将模块一起合并到文件之中</p>
+</li>
+<li><p>示例：</p>
+<ul>
+<li>&#96;&#96;&#96;json<br>“compilerOptions”: {<br>“outFile”: “dist&#x2F;app.js”<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- rootDir</span><br><span class="line"></span><br><span class="line">  - 指定代码的根目录，默认情况下编译后文件的目录结构会以最长的公共目录为根目录，通过rootDir可以手动指定根目录</span><br><span class="line"></span><br><span class="line">  - 示例：</span><br><span class="line"></span><br><span class="line">    - ```json</span><br><span class="line">      &quot;compilerOptions&quot;: &#123;</span><br><span class="line">          &quot;rootDir&quot;: &quot;./src&quot;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>allowJs</p>
+<ul>
+<li>是否对js文件编译</li>
+</ul>
+</li>
+<li><p>checkJs</p>
+<ul>
+<li><p>是否对js文件进行检查</p>
+</li>
+<li><p>示例：</p>
+<ul>
+<li>&#96;&#96;&#96;json<br>“compilerOptions”: {<br>“allowJs”: true,<br>“checkJs”: true<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">            - removeComments</span><br><span class="line"></span><br><span class="line">              - 是否删除注释</span><br><span class="line">              - 默认值：false</span><br><span class="line"></span><br><span class="line">            - noEmit</span><br><span class="line"></span><br><span class="line">              - 不对代码进行编译</span><br><span class="line">              - 默认值：false</span><br><span class="line"></span><br><span class="line">            - sourceMap</span><br><span class="line"></span><br><span class="line">              - 是否生成sourceMap</span><br><span class="line">              - 默认值：false</span><br><span class="line"></span><br><span class="line">              </span><br><span class="line"></span><br><span class="line">          - 严格检查</span><br><span class="line"></span><br><span class="line">            - strict</span><br><span class="line">              - 启用所有的严格检查，默认值为true，设置后相当于开启了所有的严格检查</span><br><span class="line">            - alwaysStrict</span><br><span class="line">              - 总是以严格模式对代码进行编译</span><br><span class="line">            - noImplicitAny</span><br><span class="line">              - 禁止隐式的any类型</span><br><span class="line">            - noImplicitThis</span><br><span class="line">              - 禁止类型不明确的this</span><br><span class="line">            - strictBindCallApply</span><br><span class="line">              - 严格检查bind、call和apply的参数列表</span><br><span class="line">            - strictFunctionTypes</span><br><span class="line">              - 严格检查函数的类型</span><br><span class="line">            - strictNullChecks</span><br><span class="line">              - 严格的空值检查</span><br><span class="line">            - strictPropertyInitialization</span><br><span class="line">              - 严格检查属性是否初始化</span><br><span class="line"></span><br><span class="line">          - 额外检查</span><br><span class="line"></span><br><span class="line">            - noFallthroughCasesInSwitch</span><br><span class="line">              - 检查switch语句包含正确的break</span><br><span class="line">            - noImplicitReturns</span><br><span class="line">              - 检查函数没有隐式的返回值</span><br><span class="line">            - noUnusedLocals</span><br><span class="line">              - 检查未使用的局部变量</span><br><span class="line">            - noUnusedParameters</span><br><span class="line">              - 检查未使用的参数</span><br><span class="line"></span><br><span class="line">          - 高级</span><br><span class="line"></span><br><span class="line">            - allowUnreachableCode</span><br><span class="line">              - 检查不可达代码</span><br><span class="line">              - 可选值：</span><br><span class="line">                - true，忽略不可达代码</span><br><span class="line">                - false，不可达代码将引起错误</span><br><span class="line">            - noEmitOnError</span><br><span class="line">              - 有错误的情况下不进行编译</span><br><span class="line">              - 默认值：false</span><br><span class="line"></span><br><span class="line">## 4、webpack</span><br><span class="line"></span><br><span class="line">- 通常情况下，实际开发中我们都需要使用构建工具对代码进行打包，TS同样也可以结合构建工具一起使用，下边以webpack为例介绍一下如何结合构建工具使用TS。</span><br><span class="line"></span><br><span class="line">- 步骤：</span><br><span class="line"></span><br><span class="line">  1. 初始化项目</span><br><span class="line"></span><br><span class="line">     - 进入项目根目录，执行命令 ``` npm init -y```</span><br><span class="line">       - 主要作用：创建package.json文件</span><br><span class="line"></span><br><span class="line">  2. 下载构建工具</span><br><span class="line"></span><br><span class="line">     - ```npm i -D webpack webpack-cli webpack-dev-server typescript ts-loader clean-webpack-plugin```</span><br><span class="line">       - 共安装了7个包</span><br><span class="line">         - webpack</span><br><span class="line">           - 构建工具webpack</span><br><span class="line">         - webpack-cli</span><br><span class="line">           - webpack的命令行工具</span><br><span class="line">         - webpack-dev-server</span><br><span class="line">           - webpack的开发服务器</span><br><span class="line">         - typescript</span><br><span class="line">           - ts编译器</span><br><span class="line">         - ts-loader</span><br><span class="line">           - ts加载器，用于在webpack中编译ts文件</span><br><span class="line">         - html-webpack-plugin</span><br><span class="line">           - webpack中html插件，用来自动创建html文件</span><br><span class="line">         - clean-webpack-plugin</span><br><span class="line">           - webpack中的清除插件，每次构建都会先清除目录</span><br><span class="line"></span><br><span class="line">  3. 根目录下创建webpack的配置文件webpack.config.js</span><br><span class="line"></span><br><span class="line">     - ```javascript</span><br><span class="line">       const path = require(&quot;path&quot;);</span><br><span class="line">       const HtmlWebpackPlugin = require(&quot;html-webpack-plugin&quot;);</span><br><span class="line">       const &#123; CleanWebpackPlugin &#125; = require(&quot;clean-webpack-plugin&quot;);</span><br><span class="line">       </span><br><span class="line">       module.exports = &#123;</span><br><span class="line">           optimization:&#123;</span><br><span class="line">               minimize: false // 关闭代码压缩，可选</span><br><span class="line">           &#125;,</span><br><span class="line">       </span><br><span class="line">           entry: &quot;./src/index.ts&quot;,</span><br><span class="line">           </span><br><span class="line">           devtool: &quot;inline-source-map&quot;,</span><br><span class="line">           </span><br><span class="line">           devServer: &#123;</span><br><span class="line">               contentBase: &#x27;./dist&#x27;</span><br><span class="line">           &#125;,</span><br><span class="line">       </span><br><span class="line">           output: &#123;</span><br><span class="line">               path: path.resolve(__dirname, &quot;dist&quot;),</span><br><span class="line">               filename: &quot;bundle.js&quot;,</span><br><span class="line">               environment: &#123;</span><br><span class="line">                   arrowFunction: false // 关闭webpack的箭头函数，可选</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">       </span><br><span class="line">           resolve: &#123;</span><br><span class="line">               extensions: [&quot;.ts&quot;, &quot;.js&quot;]</span><br><span class="line">           &#125;,</span><br><span class="line">           </span><br><span class="line">           module: &#123;</span><br><span class="line">               rules: [</span><br><span class="line">                   &#123;</span><br><span class="line">                       test: /\.ts$/,</span><br><span class="line">                       use: &#123;</span><br><span class="line">                          loader: &quot;ts-loader&quot;     </span><br><span class="line">                       &#125;,</span><br><span class="line">                       exclude: /node_modules/</span><br><span class="line">                   &#125;</span><br><span class="line">               ]</span><br><span class="line">           &#125;,</span><br><span class="line">       </span><br><span class="line">           plugins: [</span><br><span class="line">               new CleanWebpackPlugin(),</span><br><span class="line">               new HtmlWebpackPlugin(&#123;</span><br><span class="line">                   title:&#x27;TS测试&#x27;</span><br><span class="line">               &#125;),</span><br><span class="line">           ]</span><br><span class="line">       </span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li><p>根目录下创建tsconfig.json，配置可以根据自己需要</p>
+<ul>
+<li>&#96;&#96;&#96;json<br>{<br>“compilerOptions”: {<br>    “target”: “ES2015”,<br>    “module”: “ES2015”,<br>    “strict”: true<br>}<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">5. 修改package.json添加如下配置</span><br><span class="line"></span><br><span class="line">   - ```json</span><br><span class="line">     &#123;</span><br><span class="line">       ...略...</span><br><span class="line">       &quot;scripts&quot;: &#123;</span><br><span class="line">         &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</span><br><span class="line">         &quot;build&quot;: &quot;webpack&quot;,</span><br><span class="line">         &quot;start&quot;: &quot;webpack serve --open chrome.exe&quot;</span><br><span class="line">       &#125;,</span><br><span class="line">       ...略...</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>在src下创建ts文件，并在并命令行执行<code>npm run build</code>对代码进行编译，或者执行<code>npm start</code>来启动开发服务器</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="5、Babel"><a href="#5、Babel" class="headerlink" title="5、Babel"></a>5、Babel</h2><ul>
+<li><p>经过一系列的配置，使得TS和webpack已经结合到了一起，除了webpack，开发中还经常需要结合babel来对代码进行转换以使其可以兼容到更多的浏览器，在上述步骤的基础上，通过以下步骤再将babel引入到项目中。</p>
+<ol>
+<li><p>安装依赖包：</p>
+<ul>
+<li><code>npm i -D @babel/core @babel/preset-env babel-loader core-js</code></li>
+<li>分别是：<ul>
+<li>@babel&#x2F;core<ul>
+<li>babel的核心工具</li>
+</ul>
+</li>
+<li>@babel&#x2F;preset-env<ul>
+<li>babel的预定义环境</li>
+</ul>
+</li>
+<li>@babel-loader<ul>
+<li>babel在webpack中的加载器</li>
+</ul>
+</li>
+<li>core-js<ul>
+<li>core-js用来使老版本的浏览器支持新版ES语法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>修改webpack.config.js配置文件</p>
+<ul>
+<li><pre><code class="javascript">...略...
+module: &#123;
+    rules: [
+        &#123;
+            test: /\.ts$/,
+            use: [
+                &#123;
+                    loader: &quot;babel-loader&quot;,
+                    options:&#123;
+                        presets: [
+                            [
+                                &quot;@babel/preset-env&quot;,
+                                &#123;
+                                    &quot;targets&quot;:&#123;
+                                        &quot;chrome&quot;: &quot;58&quot;,
+                                        &quot;ie&quot;: &quot;11&quot;
+                                    &#125;,
+                                    &quot;corejs&quot;:&quot;3&quot;,
+                                    &quot;useBuiltIns&quot;: &quot;usage&quot;
+                                &#125;
+                            ]
+                        ]
+                    &#125;
+                &#125;,
+                &#123;
+                    loader: &quot;ts-loader&quot;,
+
+                &#125;
+            ],
+            exclude: /node_modules/
+        &#125;
+    ]
+&#125;
+...略...
+</code></pre>
+</li>
+<li><p>如此一来，使用ts编译后的文件将会再次被babel处理，使得代码可以在大部分浏览器中直接使用，可以在配置选项的targets中指定要兼容的浏览器版本。</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
 
       
 
@@ -291,7 +577,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/22/hexo%E6%93%8D%E4%BD%9C%E5%A4%87%E5%BF%98/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -305,15 +591,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/07/02/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/12/25/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JS字符串函数总结
+          TypeScript学习文档(2)
         
       </div>
     </a>
   
+  
+    <a href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React Hooks备忘录</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
