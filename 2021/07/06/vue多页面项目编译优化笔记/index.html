@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>hexo操作备忘 | 吴晨光的个人博客</title>
+  <title>vue多页面项目编译优化笔记 | 吴晨光的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、命令">
+  <meta name="description" content="原因公司项目属于vue多页面项目，既可以使用vue的模块化开发，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo操作备忘">
-<meta property="og:url" content="http://example.com/2021/06/22/hexo%E6%93%8D%E4%BD%9C%E5%A4%87%E5%BF%98/index.html">
+<meta property="og:title" content="vue多页面项目编译优化笔记">
+<meta property="og:url" content="http://example.com/2021/07/06/vue%E5%A4%9A%E9%A1%B5%E9%9D%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="吴晨光的个人博客">
-<meta property="og:description" content="一、命令">
+<meta property="og:description" content="原因公司项目属于vue多页面项目，既可以使用vue的模块化开发，">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-06-22T11:52:57.000Z">
-<meta property="article:modified_time" content="2022-03-21T15:48:06.513Z">
+<meta property="og:image" content="http://example.com/img/1.png">
+<meta property="og:image" content="http://example.com/img/2.png">
+<meta property="article:published_time" content="2021-07-06T15:56:30.000Z">
+<meta property="article:modified_time" content="2022-02-26T16:33:48.936Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/1.png">
   
     <link rel="alternative" href="/atom.xml" title="吴晨光的个人博客" type="application/atom+xml">
   
@@ -153,54 +156,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hexo操作备忘" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-vue多页面项目编译优化笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hexo操作备忘
+      vue多页面项目编译优化笔记
     </h1>
   
 
         
-        <a href="/2021/06/22/hexo%E6%93%8D%E4%BD%9C%E5%A4%87%E5%BF%98/" class="archive-article-date">
-  	<time datetime="2021-06-22T11:52:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-22</time>
+        <a href="/2021/07/06/vue%E5%A4%9A%E9%A1%B5%E9%9D%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2021-07-06T15:56:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、命令"><a href="#一、命令" class="headerlink" title="一、命令"></a>一、命令</h1><span id="more"></span>
-<p>1.清除缓存文件 (db.json) 和已生成的静态文件 (public)。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
-<p>2.新建一篇文章。去source文件夹下的，_post文件下去编辑。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure></p>
-<p>3.生成静态文件。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate=&gt;(hexo g)</span><br></pre></td></tr></table></figure></p>
-<p>4.本地网站预览效果,热部署。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server=&gt;(hexo s)</span><br></pre></td></tr></table></figure></p>
-<p>5.将本地的文件推送到github上。<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy=&gt;(hexo d)</span><br></pre></td></tr></table></figure></p>
-<h1 id="二、博客书写"><a href="#二、博客书写" class="headerlink" title="二、博客书写"></a>二、博客书写</h1><p>1.插入图片</p>
-<p>将图片统一放在<code>source/img</code>文件夹中，通过markdown语法访问它们。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/img/1.png&quot; alt=&quot;1&quot; style=&quot;zoom:75%;&quot; /&gt;</span><br></pre></td></tr></table></figure>
+        <h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>公司项目属于vue多页面项目，既可以使用vue的模块化开发，<span id="more"></span>又可以做多页打包上线。但是，这个项目变得越来越庞大，run dev需要几分钟，每次只改动一个页面的样式，就需要热加载几十秒，极大影响了开发效率。</p>
+<p>这是因为配置webpack多页面配置的时候，修改了HtmlWebpackPlugin插件，项目变成了多入口，每次修改代码需要对每一个入口文件都执行一遍emit，事实也证明每次编译都是卡在emitting HtmlWebpackPlugin上面很长时间。</p>
+<p>如果如果只修改一个页面的话，就编译所有的页面，这太不合理了。</p>
+<h1 id="处理步骤"><a href="#处理步骤" class="headerlink" title="处理步骤"></a>处理步骤</h1><p>这时可以修改项目的多入口和多出口的配置，把它改成单入口单出口。我这里需要经常使用三个页面，所以就修改成三入口三出口，速度直接提升十倍以上。</p>
+<p>在build文件夹下的utils文件做修改：</p>
+<p>多入口修改：</p>
+<img src="/img/1.png" alt="1" style="zoom:75%;" />
 
-<h1 id="三、参考资料"><a href="#三、参考资料" class="headerlink" title="三、参考资料"></a>三、参考资料</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/linton1/article/details/90137367?ops_request_misc=%7B%22request_id%22:%22164387651016781685373645%22,%22scm%22:%2220140713.130102334.pc_all.%22%7D&request_id=164387651016781685373645&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-4-90137367.pc_search_result_cache&utm_term=github+page%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2&spm=1018.2226.3001.4187">详细的hexo+githubPage搭建个人博客_风的季节-CSDN博客_hexo+github</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/victoryxa/article/details/103733655?spm=1001.2101.3001.6650.12&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-12.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-12.pc_relevant_default&utm_relevant_index=22">hexo+github搭建博客(超级详细版，精细入微)_过客~励む-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/grape875499765/article/details/79017906?ops_request_misc=%7B%22request_id%22:%22164387651016781685373645%22,%22scm%22:%2220140713.130102334.pc_all.%22%7D&request_id=164387651016781685373645&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-6-79017906.pc_search_result_cache&utm_term=github+page%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2&spm=1018.2226.3001.4187">个人技术博客的选择：CSDN、博客园、简书、知乎专栏还是Github Page？_灵魂画师牧码-CSDN博客_博客园</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/gdutxiaoxu/article/details/53576018?ops_request_misc=%7B%22request_id%22:%22164511016616780264052944%22,%22scm%22:%2220140713.130102334.pc_all.%22%7D&request_id=164511016616780264052944&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~hot_rank-1-53576018.pc_search_result_control_group&utm_term=hexo+++githubpages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2&spm=1018.2226.3001.4187">手把手教你用Hexo+Github 搭建属于自己的博客_徐公，微信公众号同名-CSDN博客_hexo搭建github博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.imooc.com/article/16054">hexo + githubpages搭建个人博客_慕课手记</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/f2315895270/article/details/91355552">Hexo博客搭建问题_f2315895270的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30055773/article/details/103095348?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&utm_relevant_index=4">Hexo个人博客搭建(Yilia主题)_康__的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43864927/article/details/106967183?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.pc_relevant_default&spm=1001.2101.3001.4242.1&utm_relevant_index=2">Hexo个人博客之yilia主题的安装和配置_我真有起床气的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43623082/article/details/103600106?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-5.pc_relevant_default&spm=1001.2101.3001.4242.4&utm_relevant_index=7">hexo博客配置yilia主题_Error 0的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lynnbest/article/details/79845944?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_default&utm_relevant_index=1">Hexo yilia 主题一揽子使用方案_YunShell-CSDN博客_hexo yilia主题</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.html.cn/qa/css3/14956.html">hexo不加载css怎么解决 - html中文网</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34243930/article/details/102557949?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.pc_relevant_default&spm=1001.2101.3001.4242.1&utm_relevant_index=3">用Github Pages+Hexo搭建博客之(一)搭建Github Pages+Hexo+部署到GitHub服务器 #解决hexo d部署报错 #解决css,js文件(网页样式图片)加载不出来_夏普通-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42971942/article/details/88623749">【报错】hexo 部署到 github 上，css、js 文件加载不出来怎么办_sparks42的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41287260/article/details/97693850">Hexo4.扩展主题的个性化设置-Hexo(yilia)+GitHub Pages搭建个人博客系列文章_荷塘月色-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Monster_RL/article/details/112292045">解决 hexo yilia主题作者名字不显示问题_Monster_RL的博客-CSDN博客_hexo不显示名字</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41599858/article/details/104805987?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4.pc_relevant_default&utm_relevant_index=7">【Hexo搭建个人博客】：yilia主题配置(四) - 分类管理_Alfred的博客-CSDN博客_yilia分类</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44777549/article/details/102881797?spm=1001.2101.3001.6650.13&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-13.pc_relevant_aa&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-13.pc_relevant_aa&utm_relevant_index=17">Hexo-yilia个人博客配置_yangyangpython的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25560423/article/details/53785411?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_aa&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_aa&utm_relevant_index=1">hexo 新建一篇文章给它添加分类和标签:_Updating!-CSDN博客</a></p>
+<p>多出口修改：</p>
+<img src="/img/2.png" alt="2" style="zoom: 67%;" />
+
+<p>修改完成，run dev需要30s，修改后热加载需要2s，极大地提高了HMR速度，修改优化完成。</p>
+<p>PS：可以在终端控制台看到这个项目的入口文件多达535个，怪不得这么慢。</p>
+<p>PS：以上是webpack4的优化方案，如果是webpack4以下，可以用html-webpack-plugin-for-multihtml插件。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43162119/article/details/96868484?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control">https://blog.csdn.net/weixin_43162119/article/details/96868484?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq1014156094/article/details/80385796?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/qq1014156094/article/details/80385796?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&amp;spm=1001.2101.3001.4242</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Dobility/article/details/87781713?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-4.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-4.control">https://blog.csdn.net/Dobility/article/details/87781713?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38074535/article/details/105292323">https://blog.csdn.net/qq_38074535/article/details/105292323</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38659265/article/details/87815618">https://blog.csdn.net/weixin_38659265/article/details/87815618</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30784501/article/details/96670521">https://blog.csdn.net/weixin_30784501/article/details/96670521</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30649641/article/details/96365315">https://blog.csdn.net/weixin_30649641/article/details/96365315</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39745013/article/details/110467719">https://blog.csdn.net/weixin_39745013/article/details/110467719</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6877123009555988493">https://juejin.cn/post/6877123009555988493</a></p>
 
       
 
@@ -291,7 +289,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/22/hexo%E6%93%8D%E4%BD%9C%E5%A4%87%E5%BF%98/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/07/06/vue%E5%A4%9A%E9%A1%B5%E9%9D%A2%E9%A1%B9%E7%9B%AE%E7%BC%96%E8%AF%91%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -305,15 +303,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/07/02/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JS字符串函数总结
+          React Hooks备忘录
         
       </div>
     </a>
   
+  
+    <a href="/2021/07/02/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS字符串函数总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
