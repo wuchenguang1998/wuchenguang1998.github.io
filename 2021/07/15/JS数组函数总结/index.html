@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、定义数组">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-15T15:05:00.000Z">
-<meta property="article:modified_time" content="2022-06-18T15:56:10.611Z">
+<meta property="article:modified_time" content="2022-07-09T11:11:00.390Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="JS基础">
 <meta name="twitter:card" content="summary">
@@ -197,7 +197,74 @@
 <p>4.有length属性的，可用Array.from()转成数组</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">    a: &#x27;xxx&#x27;,</span><br><span class="line">    b: &#x27;yyy&#x27;,</span><br><span class="line">&#125;</span><br><span class="line">console.log(Array.from(obj));  //[]</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;0: &#x27;a&#x27;, 1: &#x27;b&#x27;, length: 2&#125;;</span><br><span class="line">console.log(Array.from(obj));  //[&#x27;a&#x27;, &#x27;b&#x27;]</span><br></pre></td></tr></table></figure>
 
+<p>Array.from第二个参数是对数组每个元素使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;aaa&lt;/div&gt;</span><br><span class="line">&lt;div&gt;bbb&lt;/div&gt;</span><br><span class="line">//-------------</span><br><span class="line">let divs = document.querySelectorAll(&#x27;div&#x27;);</span><br><span class="line">Array.from(divs).forEach(item =&gt; &#123;</span><br><span class="line">	console.log(item.innerHTML);</span><br><span class="line">&#125;);</span><br><span class="line">Array.from(divs, function(item)&#123;</span><br><span class="line">	console.log(item.innerHTML);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>还可以用原型链方法：Array.prototype.map.call(divs, function () {…})</p>
+<p>或者展开语法：[…divs].map((item) &#x3D;&gt; {…})</p>
+<h1 id="五、展开语法"><a href="#五、展开语法" class="headerlink" title="五、展开语法"></a>五、展开语法</h1><h2 id="1-合并数组"><a href="#1-合并数组" class="headerlink" title="1.合并数组"></a>1.合并数组</h2><p>法一、遍历push</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;];</span><br><span class="line">let arr2 = [&#x27;d&#x27;, &#x27;e&#x27;];</span><br><span class="line">for(let val of arr2) &#123;</span><br><span class="line">	arr1.push(val);</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr1);</span><br></pre></td></tr></table></figure>
+
+<p>法二、展开语法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;];</span><br><span class="line">let arr2 = [&#x27;d&#x27;, &#x27;e&#x27;];</span><br><span class="line">arr1 = [...arr1, ...arr2];</span><br><span class="line">console.log(arr1);</span><br></pre></td></tr></table></figure>
+
+<p>法三、concat方法(略)</p>
+<h2 id="2-函数使用展开语法，-以一个变量接收多个参数"><a href="#2-函数使用展开语法，-以一个变量接收多个参数" class="headerlink" title="2.函数使用展开语法， 以一个变量接收多个参数"></a>2.函数使用展开语法， 以一个变量接收多个参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function sum(...args) &#123;</span><br><span class="line">    console.log(args);   //[1, 2, 3, 4, 5]</span><br><span class="line">    return args.reduce((pre, cur) =&gt; &#123;</span><br><span class="line">    	return pre += cur;</span><br><span class="line">    &#125;, 0)</span><br><span class="line">&#125;</span><br><span class="line">console.log(sum(1, 2, 3, 4, 5));   //15</span><br></pre></td></tr></table></figure>
+
+<h1 id="六、解构赋值"><a href="#六、解构赋值" class="headerlink" title="六、解构赋值"></a>六、解构赋值</h1><h2 id="1-基本使用"><a href="#1-基本使用" class="headerlink" title="1.基本使用"></a>1.基本使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&#x27;wcg&#x27;, 1998];</span><br><span class="line">let [name, year] = arr;</span><br><span class="line">console.log(name);  //wcg</span><br><span class="line">console.log(year);  //1998</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(...&#x27;abcde&#x27;);  //a b c d e</span><br><span class="line">console.log([...&#x27;abcde&#x27;]);  //[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;]</span><br><span class="line">const [...arr] = &#x27;abcde&#x27;;</span><br><span class="line">console.log(arr);    //[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-只取数组中的某个值，-可以用逗号占位"><a href="#2-只取数组中的某个值，-可以用逗号占位" class="headerlink" title="2.只取数组中的某个值， 可以用逗号占位"></a>2.只取数组中的某个值， 可以用逗号占位</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let [, year] = [&#x27;wcg&#x27;, 1998];</span><br><span class="line">console.log(year);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-解构与展开语法混用"><a href="#3-解构与展开语法混用" class="headerlink" title="3.解构与展开语法混用"></a>3.解构与展开语法混用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let [name, ...args] = [&#x27;wcg&#x27;, 1998, &#x27;man&#x27;];</span><br><span class="line">console.log(name);   //wcg</span><br><span class="line">console.log(args);   //[1998, &#x27;man&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-默认值"><a href="#4-默认值" class="headerlink" title="4.默认值"></a>4.默认值</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let [name, year = 1998] = [&#x27;wcg&#x27;];</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-函数参数接收"><a href="#5-函数参数接收" class="headerlink" title="5.函数参数接收"></a>5.函数参数接收</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function show ([name, year]) &#123;</span><br><span class="line">    console.log(name);</span><br><span class="line">    console.log(year);</span><br><span class="line">&#125;</span><br><span class="line">show([&#x27;wcg&#x27;, 1998]);</span><br></pre></td></tr></table></figure>
+
+<h1 id="七、追加数组元素"><a href="#七、追加数组元素" class="headerlink" title="七、追加数组元素"></a>七、追加数组元素</h1><p>1.使用数组索引追加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&#x27;wcg&#x27;, 1998];</span><br><span class="line">arr[arr.length] = &#x27;man&#x27;;</span><br><span class="line">console.log(arr);  //[&#x27;wcg&#x27;, 1998, &#x27;man&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>2.展开语法追加多个(略)</p>
+<p>3.使用push方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&#x27;wcg&#x27;, 1998];</span><br><span class="line">arr.push(&#x27;man&#x27;);</span><br><span class="line">arr.push(1, 2, 3);  //可同时追加多个</span><br><span class="line">console.log(arr);  //[&#x27;wcg&#x27;, 1998, &#x27;man&#x27;, 1, 2, 3]</span><br></pre></td></tr></table></figure>
+
+<p>push返回数组长度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&#x27;wcg&#x27;, 1998];</span><br><span class="line">let skills = [&#x27;js&#x27;, &#x27;Vue&#x27;, &#x27;React&#x27;];</span><br><span class="line">let len =  arr.push(...skills);</span><br><span class="line">console.log(len);  //5</span><br></pre></td></tr></table></figure>
+
+<h1 id="八、出栈，入栈，填充数组"><a href="#八、出栈，入栈，填充数组" class="headerlink" title="八、出栈，入栈，填充数组"></a>八、出栈，入栈，填充数组</h1><p>1.pop弹出数组末尾元素，返回弹出的元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&#x27;wcg&#x27;, 1998];</span><br><span class="line">let str = arr.pop();</span><br><span class="line">console.log(str);  //1998</span><br></pre></td></tr></table></figure>
+
+<p>2.unshift从数组前端添加元素，返回数组长度(同样也是可以添加多个)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&#x27;wcg&#x27;, 1998];</span><br><span class="line">let len = arr.unshift(&#x27;man&#x27;);</span><br><span class="line">console.log(len);  //3</span><br></pre></td></tr></table></figure>
+
+<p>3.shift从数组前端移除元素，返回移除的元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&#x27;wcg&#x27;, 1998];</span><br><span class="line">let str = arr.shift();</span><br><span class="line">console.log(str);  //wcg</span><br></pre></td></tr></table></figure>
+
+<p>4.填充元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(Array(5));  //生成长度为5的空数组</span><br><span class="line">console.log(Array(5).fill(&#x27;wcg&#x27;));  //[&#x27;wcg&#x27;, &#x27;wcg&#x27;, &#x27;wcg&#x27;, &#x27;wcg&#x27;, &#x27;wcg&#x27;]</span><br><span class="line">console.log([1, 2, 3, 4].fill(&#x27;wcg&#x27;, 1 , 2));  //[1, &#x27;wcg&#x27;, 3, 4]</span><br></pre></td></tr></table></figure>
+
+<h1 id="九、增删改"><a href="#九、增删改" class="headerlink" title="九、增删改"></a>九、增删改</h1><h2 id="1-slice截取数组元素，不改变原数组"><a href="#1-slice截取数组元素，不改变原数组" class="headerlink" title="1.slice截取数组元素，不改变原数组"></a>1.slice截取数组元素，不改变原数组</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4, 5];</span><br><span class="line">console.log(arr.slice(1, 2));  //2</span><br><span class="line">console.log(arr);  //原数组</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-splice对数组增加，删除，替换，会改变原数组"><a href="#2-splice对数组增加，删除，替换，会改变原数组" class="headerlink" title="2.splice对数组增加，删除，替换，会改变原数组"></a>2.splice对数组增加，删除，替换，会改变原数组</h2><p>删除元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4, 5];</span><br><span class="line">let res = arr.splice(0, 2);</span><br><span class="line">console.log(res);  //[1, 2]</span><br><span class="line">console.log(arr);  //[3, 4, 5]</span><br></pre></td></tr></table></figure>
+
+<p>在数组前端增加元素，支持添加多个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4, 5];</span><br><span class="line">let res = arr.splice(0, 0, &#x27;wcg&#x27;);</span><br><span class="line">console.log(res);  //[]</span><br><span class="line">console.log(arr);  //[&#x27;wcg&#x27;, 1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+
+<p>在数组末尾添加元素，支持多个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4, 5];</span><br><span class="line">let res = arr.splice(arr.length, 0, &#x27;wcg&#x27;, 1998);</span><br><span class="line">console.log(res);  //[]</span><br><span class="line">console.log(arr);  //[1, 2, 3, 4, 5, &#x27;wcg&#x27;, 1998]</span><br></pre></td></tr></table></figure>
+
+<p>替换元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4, 5];</span><br><span class="line">let res = arr.splice(2, 1, &#x27;wcg&#x27;);</span><br><span class="line">console.log(res);  //[3]</span><br><span class="line">console.log(arr);  //[1, 2, &#x27;wcg&#x27;, 4, 5]</span><br></pre></td></tr></table></figure>
+
+<p>编写函数实现移动数组元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function move (arr, from, to) &#123;</span><br><span class="line">    if(from &lt; 0 || to &gt;= arr.length) &#123;</span><br><span class="line">    	console.error(&#x27;参数错误！&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    const newArr = [...arr];</span><br><span class="line">    let item = newArr.splice(from, 1);</span><br><span class="line">    newArr.splice(to, 0, ...item);</span><br><span class="line">    return newArr;</span><br><span class="line">&#125;</span><br><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">console.log(move(arr, 1, 3));  //[1, 3, 4, 2]</span><br></pre></td></tr></table></figure>
+
+<h1 id="十、清空数组"><a href="#十、清空数组" class="headerlink" title="十、清空数组"></a>十、清空数组</h1>
       
 
       
