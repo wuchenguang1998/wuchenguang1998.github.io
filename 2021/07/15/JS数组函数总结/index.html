@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、定义数组">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-15T15:05:00.000Z">
-<meta property="article:modified_time" content="2022-07-09T11:11:00.390Z">
+<meta property="article:modified_time" content="2022-07-10T08:46:38.743Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="JS基础">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,11 @@
 <p>法二、展开语法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;];</span><br><span class="line">let arr2 = [&#x27;d&#x27;, &#x27;e&#x27;];</span><br><span class="line">arr1 = [...arr1, ...arr2];</span><br><span class="line">console.log(arr1);</span><br></pre></td></tr></table></figure>
 
-<p>法三、concat方法(略)</p>
+<p>法三、concat方法，可一次合并多个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&#x27;wcg&#x27;, 1998];</span><br><span class="line">let arr1 = [&#x27;man&#x27;, &#x27;GuangDong&#x27;];</span><br><span class="line">let arr2 = [&#x27;JS&#x27;, &#x27;Vue&#x27;, &#x27;React&#x27;];</span><br><span class="line">arr = arr.concat(arr1, arr2);</span><br><span class="line">console.log(arr);   //[&#x27;wcg&#x27;, 1998, &#x27;man&#x27;, &#x27;GuangDong&#x27;, &#x27;JS&#x27;, &#x27;Vue&#x27;, &#x27;React&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="2-函数使用展开语法，-以一个变量接收多个参数"><a href="#2-函数使用展开语法，-以一个变量接收多个参数" class="headerlink" title="2.函数使用展开语法， 以一个变量接收多个参数"></a>2.函数使用展开语法， 以一个变量接收多个参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function sum(...args) &#123;</span><br><span class="line">    console.log(args);   //[1, 2, 3, 4, 5]</span><br><span class="line">    return args.reduce((pre, cur) =&gt; &#123;</span><br><span class="line">    	return pre += cur;</span><br><span class="line">    &#125;, 0)</span><br><span class="line">&#125;</span><br><span class="line">console.log(sum(1, 2, 3, 4, 5));   //15</span><br></pre></td></tr></table></figure>
 
 <h1 id="六、解构赋值"><a href="#六、解构赋值" class="headerlink" title="六、解构赋值"></a>六、解构赋值</h1><h2 id="1-基本使用"><a href="#1-基本使用" class="headerlink" title="1.基本使用"></a>1.基本使用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&#x27;wcg&#x27;, 1998];</span><br><span class="line">let [name, year] = arr;</span><br><span class="line">console.log(name);  //wcg</span><br><span class="line">console.log(year);  //1998</span><br></pre></td></tr></table></figure>
@@ -264,7 +268,15 @@
 <p>编写函数实现移动数组元素</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function move (arr, from, to) &#123;</span><br><span class="line">    if(from &lt; 0 || to &gt;= arr.length) &#123;</span><br><span class="line">    	console.error(&#x27;参数错误！&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    const newArr = [...arr];</span><br><span class="line">    let item = newArr.splice(from, 1);</span><br><span class="line">    newArr.splice(to, 0, ...item);</span><br><span class="line">    return newArr;</span><br><span class="line">&#125;</span><br><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">console.log(move(arr, 1, 3));  //[1, 3, 4, 2]</span><br></pre></td></tr></table></figure>
 
-<h1 id="十、清空数组"><a href="#十、清空数组" class="headerlink" title="十、清空数组"></a>十、清空数组</h1>
+<h1 id="十、清空数组"><a href="#十、清空数组" class="headerlink" title="十、清空数组"></a>十、清空数组</h1><p>以下方法都可以清空数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">// arr = [];</span><br><span class="line">// arr.length = 0;</span><br><span class="line">// arr.splice(0);</span><br><span class="line">// arr.splice(0, arr.length);</span><br><span class="line">// while(arr.pop()) &#123;&#125;;</span><br><span class="line">console.log(arr);</span><br></pre></td></tr></table></figure>
+
+<p>arr &#x3D; [] 与 arr.length &#x3D; 0 是有区别的；使用arr &#x3D; [] 时，清空后不影响数组之前的引用；使用 arr.length &#x3D; 0 ，会影响数组之前的引用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">let temp = arr;</span><br><span class="line">arr = [];</span><br><span class="line">console.log(arr);  //[]</span><br><span class="line">console.log(temp);   //[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">let temp = arr;</span><br><span class="line">arr.length = 0;</span><br><span class="line">console.log(arr);  //[]</span><br><span class="line">console.log(temp);   //[]</span><br></pre></td></tr></table></figure>
+
+
       
 
       
