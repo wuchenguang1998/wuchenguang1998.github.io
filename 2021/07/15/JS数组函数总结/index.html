@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、定义数组">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-15T15:05:00.000Z">
-<meta property="article:modified_time" content="2022-07-10T08:46:38.743Z">
+<meta property="article:modified_time" content="2022-07-13T14:36:01.119Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="JS基础">
 <meta name="twitter:card" content="summary">
@@ -275,6 +275,27 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">let temp = arr;</span><br><span class="line">arr = [];</span><br><span class="line">console.log(arr);  //[]</span><br><span class="line">console.log(temp);   //[1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">let temp = arr;</span><br><span class="line">arr.length = 0;</span><br><span class="line">console.log(arr);  //[]</span><br><span class="line">console.log(temp);   //[]</span><br></pre></td></tr></table></figure>
+
+<h1 id="十一、数组拆分与合并"><a href="#十一、数组拆分与合并" class="headerlink" title="十一、数组拆分与合并"></a>十一、数组拆分与合并</h1><p>字符串与数组相互转化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let str = &#x27;wcg,1998&#x27;;</span><br><span class="line">let arr = str.split(&#x27;,&#x27;);</span><br><span class="line">console.log(arr);  //[&#x27;wcg&#x27;, &#x27;1998&#x27;]</span><br><span class="line">console.log(arr.join(&#x27;-&#x27;));   //wcg-1998</span><br></pre></td></tr></table></figure>
+
+<p>数组元素复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">console.log(arr.copyWithin(2, 0, 2));   //[1, 2, 1, 2]</span><br></pre></td></tr></table></figure>
+
+<h1 id="十二、数组元素查找"><a href="#十二、数组元素查找" class="headerlink" title="十二、数组元素查找"></a>十二、数组元素查找</h1><h2 id="1-indexOf，lastIndexOf-都是严格查找，值与类型都要匹配上"><a href="#1-indexOf，lastIndexOf-都是严格查找，值与类型都要匹配上" class="headerlink" title="1.indexOf，lastIndexOf(都是严格查找，值与类型都要匹配上)"></a>1.indexOf，lastIndexOf(都是严格查找，值与类型都要匹配上)</h2><p>indexOf从左侧开始查找元素，第二个参数是查找的起始点，返回数组索引，如果没有，则返回 -1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">console.log(arr.indexOf(2));   //1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4, 2];</span><br><span class="line">console.log(arr.indexOf(2, 1));   //1</span><br><span class="line">console.log(arr.indexOf(2, 2));   //4</span><br></pre></td></tr></table></figure>
+
+<p>lastIndexOf从右侧开始查找元素，第二个参数是查找的起始点，返回数组索引，如果没有，则返回 -1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4, 2];</span><br><span class="line">console.log(arr.lastIndexOf(2));   //4</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4, 2];</span><br><span class="line">console.log(arr.lastIndexOf(2, -1));   //4</span><br><span class="line">console.log(arr.lastIndexOf(2, -2));   //1</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-includes"><a href="#2-includes" class="headerlink" title="2.includes"></a>2.includes</h2><p>查找指定元素，返回布尔值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4, 2];</span><br><span class="line">console.log(arr.includes(2));   //true</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-includes方法原理实现"><a href="#3-includes方法原理实现" class="headerlink" title="3.includes方法原理实现"></a>3.includes方法原理实现</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4];</span><br><span class="line">function includes(arr, target) &#123;</span><br><span class="line">    for(const val of arr) &#123;</span><br><span class="line">    	if(val === target) return true;</span><br><span class="line">    &#125;</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br><span class="line">console.log(includes(arr, 2));  //true</span><br><span class="line">console.log(includes(arr, 5));  //false</span><br></pre></td></tr></table></figure>
 
 
       
