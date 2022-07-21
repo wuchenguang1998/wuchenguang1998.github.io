@@ -16,7 +16,7 @@
 <meta property="og:description" content="一、定义数组">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-15T15:05:00.000Z">
-<meta property="article:modified_time" content="2022-07-20T15:00:04.161Z">
+<meta property="article:modified_time" content="2022-07-21T14:36:25.568Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="JS基础">
 <meta name="twitter:card" content="summary">
@@ -367,8 +367,10 @@
 <p>获取数组最大值</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">22</span>, <span class="number">99</span>, <span class="number">46</span>, <span class="number">5</span>, <span class="number">12</span>];</span><br><span class="line"><span class="keyword">let</span> max = arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">pre, cur</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> pre &gt; cur ? pre : cur;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(max);   <span class="comment">//99</span></span><br></pre></td></tr></table></figure>
 
+<p>  值类型数组去重</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> newArr = arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">pre, cur</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(!pre.<span class="title function_">includes</span>(cur)) &#123;</span><br><span class="line">        pre.<span class="title function_">push</span>(cur);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pre;</span><br><span class="line">&#125;, []);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArr);   <span class="comment">//[1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
 
-
+<p>对象数组可以搭配find使用</p>
 
       
 
