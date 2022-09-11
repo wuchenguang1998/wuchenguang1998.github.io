@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>React Hooks备忘录 | 吴晨光的个人博客</title>
+  <title>百度地图webgl版本使用点聚合插件适配问题 | 吴晨光的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、useState">
+  <meta name="description" content="最近在项目使用百度地图做了一版地图可视化页面，需要开发落点聚合的功能。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React Hooks备忘录">
-<meta property="og:url" content="http://example.com/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/index.html">
+<meta property="og:title" content="百度地图webgl版本使用点聚合插件适配问题">
+<meta property="og:url" content="http://example.com/2022/09/10/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEwebgl%E7%89%88%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%82%B9%E8%81%9A%E5%90%88%E6%8F%92%E4%BB%B6%E9%80%82%E9%85%8D%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="吴晨光的个人博客">
-<meta property="og:description" content="一、useState">
+<meta property="og:description" content="最近在项目使用百度地图做了一版地图可视化页面，需要开发落点聚合的功能。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-12-10T12:28:20.000Z">
-<meta property="article:modified_time" content="2022-06-22T07:52:33.631Z">
+<meta property="og:image" content="http://example.com/img/3.jpg">
+<meta property="og:image" content="http://example.com/img/4.jpg">
+<meta property="article:published_time" content="2022-09-10T08:41:21.000Z">
+<meta property="article:modified_time" content="2022-09-10T10:03:54.509Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/3.jpg">
   
     <link rel="alternative" href="/atom.xml" title="吴晨光的个人博客" type="application/atom+xml">
   
@@ -153,87 +156,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-React-Hooks备忘录" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-百度地图webgl版本使用点聚合插件适配问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      React Hooks备忘录
+      百度地图webgl版本使用点聚合插件适配问题
     </h1>
   
 
         
-        <a href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2021-12-10T12:28:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-10</time>
+        <a href="/2022/09/10/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEwebgl%E7%89%88%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%82%B9%E8%81%9A%E5%90%88%E6%8F%92%E4%BB%B6%E9%80%82%E9%85%8D%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2022-09-10T08:41:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、useState"><a href="#一、useState" class="headerlink" title="一、useState"></a>一、useState</h1><span id="more"></span>
+        <p>最近在项目使用百度地图做了一版地图可视化页面，需要开发落点聚合的功能。<span id="more"></span>点聚合可以用<a target="_blank" rel="noopener" href="https://mapv.baidu.com/gl/docs/index.html">百度地图MapVGL可视化库</a>，但是这个样式实在太丑了，不符合需求，只好用回之前百度地图 JavaScript API3.0的点聚合插件，因为不支持bmapgl版本，所以需要做一些适配。传送门：<a target="_blank" rel="noopener" href="https://lbsyun.baidu.com/index.php?title=open/library">百度地图开源库</a></p>
+<p>一、先下载对应的两个源码文件TextIconOverlay和MarkerClusterer，引入项目中。下载的是不经过丑化的js文件，因为后续还需要改源码；</p>
+<p>二、进行关键字替换，将BMap替换为BMapGL，而且必须是全字替换；</p>
+<p>三、接着就可以使用最简单的调用示例进行调试调用。官网参考示例：<a target="_blank" rel="noopener" href="https://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/conflux">https://lbsyun.baidu.com/index.php?title=jspopular3.0/guide/conflux</a>  。  但是会出现一个问题，就是虽然能使用点聚合功能，但是在拖拽地图的时候，聚合点会自动消失，拖拽结束后才会出现，解决办法：将TextIconOverlay中的对应位置的markerMouseTarget改成markerPane，改变点聚合自定义覆盖物所在的地图容器。</p>
+<img src="/img/3.jpg" alt="3" style="zoom:75%;" />
 
-<h2 id="1-声明、读取："><a href="#1-声明、读取：" class="headerlink" title="1.声明、读取："></a>1.声明、读取：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &#x27;react&#x27;;</span><br><span class="line">function Example()&#123;</span><br><span class="line">    const [ name , setName ] = useState(&#x27;wcg&#x27;);</span><br><span class="line">    return (</span><br><span class="line">            &lt;p&gt;我叫&#123;name&#125;,是一名前端工程师&lt;/p&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">export default Example;</span><br></pre></td></tr></table></figure>
+<p>当然了，本质上是地图事件监听问题，上面的问题也可以采取另一种解决方案，不过麻烦一点。可以参考这篇：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/302e2803517a">https://www.jianshu.com/p/302e2803517a</a> 。</p>
+<p>四、本以为这里就结束了，但是我发现JS API3.0的聚合示例是可以点击聚合点进行点扩散的，用在bmapgl版本就失效了，甚至在技术网站找不到解决方案，只好自己看看源码，看到了MarkerClusterer文件里的这一段代码：</p>
+<img src="/img/4.jpg" alt="4" style="zoom:75%;" />
 
-<h2 id="2-使用-修改"><a href="#2-使用-修改" class="headerlink" title="2.使用(修改):"></a>2.使用(修改):</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;()=&gt;&#123;setName(&#x27;wuchenguang&#x27;)&#125;&#125;&gt;click me&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p>很明显是setViewport失效了，导致点聚合点击无法扩散。打印下这个thatBounds，再查下API就找到了原因：因为JS API3.0的setViewport接收的是Bounds实例，但是在百度地图WebGL版本，setViewport接收的是Point类型的数组，导致setViewport失效。那就好办了，在源码把Bounds实例转换成Point类型的数组就可以解决。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> points = <span class="title class_">Object</span>.<span class="title function_">values</span>(thatBounds);</span><br><span class="line">thatMap.<span class="title function_">setViewport</span>(points);</span><br></pre></td></tr></table></figure>
 
-<h1 id="二、useEffect"><a href="#二、useEffect" class="headerlink" title="二、useEffect"></a>二、useEffect</h1><p>调用及解绑副作用：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(()=&gt;&#123;</span><br><span class="line">        console.log(&#x27;渲染了&#x27;);</span><br><span class="line">        return ()=&gt;&#123;</span><br><span class="line">            console.log(&#x27;解绑了&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,[])</span><br></pre></td></tr></table></figure>
+<p>改完后查看效果，点击聚合点确实可以进行扩散。但是还没完。。。因为当聚合点很多的时候，点击分散效果会变得很卡，甚至浏览器直接卡死……只好继续排查原因，最后发现原来是click事件会触发很多次，差不多就明白了，有多少点聚合在一起，就会额外触发对应的次数。有100个点聚合在一起，click就触发了100次，加上WebGL版本的setViewport性能比JSAPI版本要差，使得卡顿变得更加明显。解决方法：使用了lodash的节流函数throttle，使得虽然click触发了多次，但是setViewport只执行一次，最终解决卡顿问题！</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MarkerClusterer.js</span></span><br><span class="line"><span class="keyword">var</span> thatBounds = <span class="variable language_">this</span>.<span class="title function_">getBounds</span>();</span><br><span class="line"><span class="keyword">const</span> points = <span class="title class_">Object</span>.<span class="title function_">values</span>(thatBounds);</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">_clusterMarker</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="comment">// thatMap.setViewport(thatBounds);</span></span><br><span class="line">    <span class="keyword">const</span> clickEvent = <span class="keyword">new</span> <span class="title class_">CustomEvent</span>(<span class="string">&#x27;clusterClick&#x27;</span>, &#123;</span><br><span class="line">        <span class="attr">detail</span>: &#123; points &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">dispatchEvent</span>(clickEvent);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h1 id="三、useContext跨组件层级传值"><a href="#三、useContext跨组件层级传值" class="headerlink" title="三、useContext跨组件层级传值"></a>三、useContext跨组件层级传值</h1><h2 id="1-新建文件ValueContext-js"><a href="#1-新建文件ValueContext-js" class="headerlink" title="1.新建文件ValueContext.js"></a>1.新建文件ValueContext.js</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line">//创建context</span><br><span class="line">const ValueContext = React.createContext(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">export default ValueContext;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 页面文件中</span></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;clusterClick&#x27;</span>, <span class="title function_">throttle</span>(clusterClick, <span class="number">200</span>, &#123; <span class="attr">trailing</span>: <span class="literal">false</span> &#125;));</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">window</span>.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;clusterClick&#x27;</span>, <span class="title function_">throttle</span>(clusterClick, <span class="number">200</span>, &#123; <span class="attr">trailing</span>: <span class="literal">false</span> &#125;));</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;, []);</span><br><span class="line"><span class="comment">// 点击聚合点</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">clusterClick</span> = (<span class="params">e</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; points &#125; = e.<span class="property">detail</span>;</span><br><span class="line">    map.<span class="property">current</span>.<span class="title function_">setViewport</span>(points);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-父组件中导入ValueContext"><a href="#2-父组件中导入ValueContext" class="headerlink" title="2.父组件中导入ValueContext"></a>2.父组件中导入ValueContext</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import ValueContext from &#x27;./ValueContext&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-父组件中使用ValueContext包裹子组件-传递变量或者函数"><a href="#3-父组件中使用ValueContext包裹子组件-传递变量或者函数" class="headerlink" title="3.父组件中使用ValueContext包裹子组件,传递变量或者函数"></a>3.父组件中使用ValueContext包裹子组件,传递变量或者函数</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;ValueContext.Provider</span><br><span class="line">    value=&#123;&#123;</span><br><span class="line">        data: searchData,</span><br><span class="line">        changeData: changeSearchData,</span><br><span class="line">    &#125;&#125;</span><br><span class="line">&gt;</span><br><span class="line">	&lt;Child /&gt;</span><br><span class="line">&lt;/ValueContext.Provider&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-子组件导入ValueContext并使用"><a href="#4-子组件导入ValueContext并使用" class="headerlink" title="4.子组件导入ValueContext并使用"></a>4.子组件导入ValueContext并使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; data, changeData &#125; = useContext(ValueContext);</span><br></pre></td></tr></table></figure>
-
-<h1 id="四、useReducer"><a href="#四、useReducer" class="headerlink" title="四、useReducer"></a>四、useReducer</h1><p>接收两个参数：</p>
-<p>​    第一个参数为reducer函数</p>
-<p>​    第二个参数是初始值</p>
-<p>使用示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useReducer &#125; from &#x27;react&#x27;;</span><br><span class="line"></span><br><span class="line">function ReducerDemo()&#123;</span><br><span class="line">    const [ count , dispatch ] =useReducer((state,action)=&gt;&#123;</span><br><span class="line">        switch(action)&#123;</span><br><span class="line">            case &#x27;add&#x27;:</span><br><span class="line">                return state+1;</span><br><span class="line">            case &#x27;sub&#x27;:</span><br><span class="line">                return state-1;</span><br><span class="line">            default:</span><br><span class="line">                return state;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,0)</span><br><span class="line">    return (</span><br><span class="line">       &lt;div&gt;</span><br><span class="line">           &lt;h2&gt;现在的分数是&#123;count&#125;&lt;/h2&gt;</span><br><span class="line">           &lt;button onClick=&#123;()=&gt;dispatch(&#x27;add&#x27;)&#125;&gt;Increment&lt;/button&gt;</span><br><span class="line">           &lt;button onClick=&#123;()=&gt;dispatch(&#x27;sub&#x27;)&#125;&gt;Decrement&lt;/button&gt;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default ReducerDemo;</span><br></pre></td></tr></table></figure>
-
-<p>在某些场景下，useReducer会比useState更适用：例如state逻辑较复杂且包含多个子值，或者下一个state依赖于之前的state等</p>
-<h1 id="五、useContext与useReducer实现类似redux的功能"><a href="#五、useContext与useReducer实现类似redux的功能" class="headerlink" title="五、useContext与useReducer实现类似redux的功能"></a>五、useContext与useReducer实现类似redux的功能</h1><p><a target="_blank" rel="noopener" href="https://jspang.com/article/50#toc6">参考资料</a></p>
-<h1 id="六、useRef"><a href="#六、useRef" class="headerlink" title="六、useRef"></a>六、useRef</h1><h2 id="1-useRef获取DOM元素"><a href="#1-useRef获取DOM元素" class="headerlink" title="1.useRef获取DOM元素"></a>1.useRef获取DOM元素</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useRef&#125; from &#x27;react&#x27;;</span><br><span class="line">function Example8()&#123;</span><br><span class="line">    const inputEl = useRef(null);</span><br><span class="line">    const onButtonClick=()=&gt;&#123; </span><br><span class="line">        inputEl.current.value=&quot;Hello ,wcg&quot;;</span><br><span class="line">        console.log(inputEl); //输出获取到的DOM节点</span><br><span class="line">    &#125;</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &#123;/*保存input的ref到inputEl */&#125;</span><br><span class="line">            &lt;input ref=&#123;inputEl&#125; type=&quot;text&quot;/&gt;</span><br><span class="line">            &lt;button onClick = &#123;onButtonClick&#125;&gt;在input上展示文字&lt;/button&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">export default Example8;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-useRef保存变量"><a href="#2-useRef保存变量" class="headerlink" title="2.useRef保存变量"></a>2.useRef保存变量</h2><p>例如声明一个paramsRef：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const paramsRef = useRef(null)</span><br></pre></td></tr></table></figure>
-
-<p>使用paramsRef.current可以进行变量的访问和修改</p>
-<h1 id="七、useMemo"><a href="#七、useMemo" class="headerlink" title="七、useMemo"></a>七、useMemo</h1><p>在函数组件中缓存计算结果，主要用来解决使用React hooks产生的无用渲染的性能问题。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const memorizedValue = useMemo(()=&gt; fn(a,b), deps[a,b])</span><br></pre></td></tr></table></figure>
-
-<p>接收两个参数：</p>
-<p>​    第一个参数为回调函数(计算过程fn，必须返回一个结果)</p>
-<p>​    第二个参数是依赖项(数组)，当依赖项中某一项发生变化，结果会重新计算</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function ChildComponent(&#123;name,children&#125;)&#123;</span><br><span class="line">    function changeXiaohong(name)&#123;</span><br><span class="line">        console.log(&#x27;她来了，她来了。小红向我们走来了&#x27;)</span><br><span class="line">        return name+&#x27;,小红向我们走来了&#x27;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const actionXiaohong = useMemo(()=&gt;changeXiaohong(name),[name]) </span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;div&gt;&#123;actionXiaohong&#125;&lt;/div&gt;</span><br><span class="line">            &lt;div&gt;&#123;children&#125;&lt;/div&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="八、useCallback"><a href="#八、useCallback" class="headerlink" title="八、useCallback"></a>八、useCallback</h1><p>在函数组件中缓存计算函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const fnA = useCallback(fnB, [a])</span><br></pre></td></tr></table></figure>
-
-<h1 id="九、useImperativeHandle"><a href="#九、useImperativeHandle" class="headerlink" title="九、useImperativeHandle"></a>九、useImperativeHandle</h1><p>可以在使用 <code>ref</code> 时自定义暴露给父组件的实例值</p>
-<p>使用示例：</p>
-<p>1.子组件中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//向父组件暴露重置表单的方法</span><br><span class="line">    useImperativeHandle(props.onRef, () =&gt; &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            reset: onReset,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>2.父组件中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const formRef = React.createRef();</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ChildCom onRef=&#123;formRef&#125; /&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formRef.current.reset();  //实现调用子组件的onReset方法</span><br></pre></td></tr></table></figure>
-
-<p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36990322/article/details/109858890?spm=1001.2101.3001.6650.5&utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~default-5.pc_relevant_paycolumn_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~default-5.pc_relevant_paycolumn_v2&utm_relevant_index=10">react中父组件调用子组件的方法_checkMa的博客-CSDN博客_react父组件调用子组件中的方法</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Coralpapy/article/details/120764813?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-120764813-blog-109858890.pc_relevant_antiscanv2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-120764813-blog-109858890.pc_relevant_antiscanv2&utm_relevant_index=5">React hook中父组件调用子组件的方法</a></p>
-<h1 id="十、补充"><a href="#十、补充" class="headerlink" title="十、补充"></a>十、补充</h1><p><strong>哪些情况下一个组件会重新渲染？</strong></p>
-<p>1.组件自身的state变化；</p>
-<p>2.父组件传递的props变化；</p>
-<p>3.父组件重新渲染了。</p>
+<p>之所以要使用自定义事件将setViewport放在页面文件中执行，是应对以后需求大佬需要基于这个点击做一些额外的操作，我就先这么做吧，毕竟惊喜无处不在。</p>
 
       
 
@@ -324,7 +285,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/09/10/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEwebgl%E7%89%88%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%82%B9%E8%81%9A%E5%90%88%E6%8F%92%E4%BB%B6%E9%80%82%E9%85%8D%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -338,18 +299,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          TypeScript学习文档(1)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/09/06/promise%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">promise异步编程</div>
+    <a href="/2022/07/03/git%E6%B5%8B%E8%AF%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git测试</div>
       <i class="icon-circle-right"></i>
     </a>
   
