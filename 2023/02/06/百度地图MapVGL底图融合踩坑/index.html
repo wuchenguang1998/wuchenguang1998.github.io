@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>吴晨光的个人博客</title>
+  <title>百度地图MapVGL底图融合踩坑 | 吴晨光的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="吴晨光的个人博客">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="在百度地图中绘制多边形覆盖物可以使用jsapi的BMapGL.Polygon，随着项目投入使用，绘制的多边形越来越多，导致页面卡顿明显，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度地图MapVGL底图融合踩坑">
+<meta property="og:url" content="http://example.com/2023/02/06/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEMapVGL%E5%BA%95%E5%9B%BE%E8%9E%8D%E5%90%88%E8%B8%A9%E5%9D%91/index.html">
 <meta property="og:site_name" content="吴晨光的个人博客">
+<meta property="og:description" content="在百度地图中绘制多边形覆盖物可以使用jsapi的BMapGL.Polygon，随着项目投入使用，绘制的多边形越来越多，导致页面卡顿明显，">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/7.jpg">
+<meta property="article:published_time" content="2023-02-06T12:48:40.000Z">
+<meta property="article:modified_time" content="2023-02-12T09:57:12.804Z">
 <meta property="article:author" content="吴晨光">
+<meta property="article:tag" content="GIS开发">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/7.jpg">
   
     <link rel="alternative" href="/atom.xml" title="吴晨光的个人博客" type="application/atom+xml">
   
@@ -154,16 +161,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-百度地图MapVGL底图融合踩坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-百度地图MapVGL底图融合踩坑" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/06/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEMapVGL%E5%BA%95%E5%9B%BE%E8%9E%8D%E5%90%88%E8%B8%A9%E5%9D%91/">百度地图MapVGL底图融合踩坑</a>
+    <h1 class="article-title" itemprop="name">
+      百度地图MapVGL底图融合踩坑
     </h1>
   
 
@@ -176,12 +181,58 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在百度地图中绘制多边形覆盖物可以使用jsapi的BMapGL.Polygon，随着项目投入使用，绘制的多边形越来越多，导致页面卡顿明显，
-        
-          <a class="article-more-a" href="/2023/02/06/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEMapVGL%E5%BA%95%E5%9B%BE%E8%9E%8D%E5%90%88%E8%B8%A9%E5%9D%91/#more">more >></a>
-        
+        <p>在百度地图中绘制多边形覆盖物可以使用jsapi的BMapGL.Polygon，随着项目投入使用，绘制的多边形越来越多，导致页面卡顿明显，<span id="more"></span>项目经理直呼受不了。于是我加了一天班，用MapVGL的mapvgl.PolygonLayer替换了BMapGL.Polygon，页面不再卡顿，操作上舒适了很多，但是又诞生了新的问题：因为地图的标注点还是采用BMapGL的BMapGL.Marker进行渲染，导致 <strong>PolygonLayer图层直接覆盖在标注点之上</strong>。</p>
+<p>最初想的解决方案是，地图标注点也更换为MapVGL的渲染方式(即IconLayer)，但试验后发现IconLayer生成的标注点大小随着屏幕分辨率的大小而改变，并不符合业务需要，更何况标注点还集成了点波纹、数字形式的label角标、popup形式的label、鼠标聚焦效果等，更换为MapVGL渲染意味着很多功能需要推翻重来，会耗费很多的时间精力。</p>
+<p>一筹莫展。直到再次查看MapVGL文档时，我才发现了个好消息。MapVGL的图层可以和百度地图底图融合，这样一来可以解决PolygonLayer在标注点之上的问题了。但也有坏消息，如图。</p>
+<img src="/img/7.jpg" alt="7" style="zoom:75%;" />
+
+<p>“慎用”说了两次，说明情况确实不简单，网上甚至找不到这类解决方案，我只好自己踩坑。于是有了这篇博客。</p>
+<h2 id="一、可以把融合步骤与添加图层分离"><a href="#一、可以把融合步骤与添加图层分离" class="headerlink" title="一、可以把融合步骤与添加图层分离"></a>一、可以把融合步骤与添加图层分离</h2><p>经过测试，添加图层操作并不是异步的，只是融合函数异步，所以我把这两步操作分离</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将mapvgl的canvas容器与地图底图融合，解决对应PolygonLayer覆盖在marker上的问题(较慢，异步执行)</span></span><br><span class="line">mapvgl.<span class="title function_">createFusionView</span>(map.<span class="property">current</span>, <span class="function">(<span class="params">view</span>) =&gt;</span> &#123;</span><br><span class="line">    mapViewFusion.<span class="property">current</span> = view;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、添加对应的PolygonLayer"><a href="#二、添加对应的PolygonLayer" class="headerlink" title="二、添加对应的PolygonLayer"></a>二、添加对应的PolygonLayer</h2><p>有了融合图层容器mapViewFusion，可以使用addLayer添加图层</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> layer = <span class="keyword">new</span> mapvgl.<span class="title class_">PolygonLayer</span>(&#123;</span><br><span class="line">    <span class="attr">lineWidth</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">data</span>: allList,</span><br><span class="line">&#125;);</span><br><span class="line">mapViewFusion.<span class="property">current</span>.<span class="title function_">addLayer</span>(layer);</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、添加PolygonLayer后，地图底图会消失"><a href="#三、添加PolygonLayer后，地图底图会消失" class="headerlink" title="三、添加PolygonLayer后，地图底图会消失"></a>三、添加PolygonLayer后，地图底图会消失</h2><p>在进行第2步之后，地图底图会莫名奇妙消失，使用鼠标滚轮缩放地图后，地图底图恢复。解决方案：添加PolygonLayer后，马上执行地图zoom缩放。</p>
+<h3 id="1-定义缩放函数，对zoom先加0-001，再减0-001。"><a href="#1-定义缩放函数，对zoom先加0-001，再减0-001。" class="headerlink" title="1.定义缩放函数，对zoom先加0.001，再减0.001。"></a>1.定义缩放函数，对zoom先加0.001，再减0.001。</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 切换zoom尝试刷新地图画布,消除mapvgl底图融合的影响</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">tryRefreshMap</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    map.<span class="property">current</span>.<span class="title function_">setZoom</span>(map.<span class="property">current</span>.<span class="title function_">getZoom</span>() + <span class="number">0.001</span>);</span><br><span class="line">    map.<span class="property">current</span>.<span class="title function_">setZoom</span>(map.<span class="property">current</span>.<span class="title function_">getZoom</span>() - <span class="number">0.001</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-添加PolygonLayer图层后，调用tryRefreshMap函数。"><a href="#2-添加PolygonLayer图层后，调用tryRefreshMap函数。" class="headerlink" title="2.添加PolygonLayer图层后，调用tryRefreshMap函数。"></a>2.添加PolygonLayer图层后，调用tryRefreshMap函数。</h3><p>完整代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let layer = new mapvgl.PolygonLayer(&#123;</span><br><span class="line">    lineWidth: 1,</span><br><span class="line">    data: allList,</span><br><span class="line">&#125;);</span><br><span class="line">mapViewFusion.current.addLayer(layer);</span><br><span class="line">tryRefreshMap();</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、并不是所有图层都适合添加到mapViewFusion"><a href="#四、并不是所有图层都适合添加到mapViewFusion" class="headerlink" title="四、并不是所有图层都适合添加到mapViewFusion"></a>四、并不是所有图层都适合添加到mapViewFusion</h2><p>在没有融合图层容器之前，我已经使用了普通的MapVGL容器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化MapVGL容器：mapView</span></span><br><span class="line">mapView.<span class="property">current</span> = <span class="keyword">new</span> mapvgl.<span class="title class_">View</span>(&#123;</span><br><span class="line">    <span class="attr">map</span>: map.<span class="property">current</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>有了mapViewFusion后，我自然而然想到要把mapView里的图层都添加到mapViewFusion，mapView容器就可以删除掉，方便图层管理。但是，并不是所有图层都适合添加到融合图层容器，比如说波纹点图层RippleLayer，添加到mapViewFusion后，波纹失去了动画效果，只有在地图缩放过程才会有波纹动画；热力点图层HeatPointLayer也是一样，只有在地图缩放过程才会渲染……</p>
+<p>所以，这类图层只能按照原来的方案，添加到普通的MapVGL容器。因此，地图需要两个MapVGL容器，一个是普通图层容器mapView，一个是融合图层容器mapViewFusion。PolygonLayer适合添加到mapViewFusion容器，而RippleLayer，HeatPointLayer适合添加到mapView容器。</p>
+<h2 id="五、融合图层容器会影响普通图层容器的渲染"><a href="#五、融合图层容器会影响普通图层容器的渲染" class="headerlink" title="五、融合图层容器会影响普通图层容器的渲染"></a>五、融合图层容器会影响普通图层容器的渲染</h2><p>在调试过程中，总会发现波纹点图层RippleLayer虽然添加到普通图层容器，也具备正常的动画效果，但在某些情况下会再次停止动画。测试后发现，是因为地图大小改变，波纹动画失效。之前不会有这个问题，所以考虑是受到融合图层容器的影响。</p>
+<p>解决方案：地图大小改变后，销毁并重新创建mapView容器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 受mapvgl底图融合影响，必须在渲染波纹前销毁并重新创建mapvgl容器</span></span><br><span class="line"><span class="comment">// 否则地图大小改变时(或者浏览器窗口大小改变时)，波纹不会渲染</span></span><br><span class="line">mapView.<span class="property">current</span>.<span class="title function_">destroy</span>();</span><br><span class="line">mapView.<span class="property">current</span> = <span class="literal">null</span>;</span><br><span class="line">mapView.<span class="property">current</span> = <span class="keyword">new</span> mapvgl.<span class="title class_">View</span>(&#123;</span><br><span class="line">    <span class="attr">map</span>: map.<span class="property">current</span>,</span><br><span class="line">&#125;);</span><br><span class="line">rippleRef.<span class="property">current</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    mapView.<span class="property">current</span>.<span class="title function_">addLayer</span>(item);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、在某些情况下，添加到融合容器的PolygonLayer也会出现问题"><a href="#六、在某些情况下，添加到融合容器的PolygonLayer也会出现问题" class="headerlink" title="六、在某些情况下，添加到融合容器的PolygonLayer也会出现问题"></a>六、在某些情况下，添加到融合容器的PolygonLayer也会出现问题</h2><p>最近对PolygonLayer增加鼠标拾取的效果，用鼠标拾取多边形时，地图底图又失效了……目前的解决方案是需要拾取的时候，添加到mapView容器；不需要拾取时，再添加到mapViewFusion容器。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -201,16 +252,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/02/06/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEMapVGL%E5%BA%95%E5%9B%BE%E8%9E%8D%E5%90%88%E8%B8%A9%E5%9D%91/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/02/06/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEMapVGL%E5%BA%95%E5%9B%BE%E8%9E%8D%E5%90%88%E8%B8%A9%E5%9D%91/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2022/09/10/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEwebgl%E7%89%88%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%82%B9%E8%81%9A%E5%90%88%E6%8F%92%E4%BB%B6%E9%80%82%E9%85%8D%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">百度地图webgl版本使用点聚合插件适配问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -230,694 +340,14 @@
 
 
 
-
-  
-    <article id="post-百度地图webgl版本使用点聚合插件适配问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/10/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEwebgl%E7%89%88%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%82%B9%E8%81%9A%E5%90%88%E6%8F%92%E4%BB%B6%E9%80%82%E9%85%8D%E9%97%AE%E9%A2%98/">百度地图webgl版本使用点聚合插件适配问题</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/10/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEwebgl%E7%89%88%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%82%B9%E8%81%9A%E5%90%88%E6%8F%92%E4%BB%B6%E9%80%82%E9%85%8D%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2022-09-10T08:41:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在项目使用百度地图做了一版地图可视化页面，需要开发落点聚合的功能。
-        
-          <a class="article-more-a" href="/2022/09/10/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEwebgl%E7%89%88%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%82%B9%E8%81%9A%E5%90%88%E6%8F%92%E4%BB%B6%E9%80%82%E9%85%8D%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">GIS开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/10/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEwebgl%E7%89%88%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%82%B9%E8%81%9A%E5%90%88%E6%8F%92%E4%BB%B6%E9%80%82%E9%85%8D%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/03/git%E6%B5%8B%E8%AF%95/">git测试</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/03/git%E6%B5%8B%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2022-07-02T17:21:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>测试</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/03/git%E6%B5%8B%E8%AF%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-styled-components使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/16/styled-components%E4%BD%BF%E7%94%A8/">styled-components使用</a>
-    </h1>
-  
-
-        
-        <a href="/2022/02/16/styled-components%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-02-16T08:43:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>styled-components是一个常用的 css in js 类库
-        
-          <a class="article-more-a" href="/2022/02/16/styled-components%E4%BD%BF%E7%94%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/02/16/styled-components%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mobx案例学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/17/mobx%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">mobx案例学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/17/mobx%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2022-01-17T13:54:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、mobx-介绍"><a href="#一、mobx-介绍" class="headerlink" title="一、mobx 介绍"></a>一、mobx 介绍</h1>
-        
-          <a class="article-more-a" href="/2022/01/17/mobx%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/17/mobx%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-http-proxy-middleware设置代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/04/http-proxy-middleware%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/">http-proxy-middleware设置代理</a>
-    </h1>
-  
-
-        
-        <a href="/2022/01/04/http-proxy-middleware%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2022-01-04T11:50:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、安装http-proxy-middleware"><a href="#一、安装http-proxy-middleware" class="headerlink" title="一、安装http-proxy-middleware"></a>一、安装http-proxy-middleware</h1>
-        
-          <a class="article-more-a" href="/2022/01/04/http-proxy-middleware%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/04/http-proxy-middleware%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-TypeScript学习文档-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/25/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-2/">TypeScript学习文档(2)</a>
-    </h1>
-  
-
-        
-        <a href="/2021/12/25/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-2/" class="archive-article-date">
-  	<time datetime="2021-12-25T08:23:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第二章-面向对象"><a href="#第二章-面向对象" class="headerlink" title="第二章 面向对象"></a>第二章 面向对象</h1>
-        
-          <a class="article-more-a" href="/2021/12/25/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/25/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-TypeScript学习文档-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/">TypeScript学习文档(1)</a>
-    </h1>
-  
-
-        
-        <a href="/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/" class="archive-article-date">
-  	<time datetime="2021-12-19T03:44:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第一章-快速入门"><a href="#第一章-快速入门" class="headerlink" title="第一章 快速入门"></a>第一章 快速入门</h1>
-        
-          <a class="article-more-a" href="/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/19/TypeScript%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React-Hooks备忘录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/">React Hooks备忘录</a>
-    </h1>
-  
-
-        
-        <a href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2021-12-10T12:28:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、useState"><a href="#一、useState" class="headerlink" title="一、useState"></a>一、useState</h1>
-        
-          <a class="article-more-a" href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/10/React-Hooks%E5%A4%87%E5%BF%98%E5%BD%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-promise异步编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/06/promise%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/">promise异步编程</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/06/promise%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2021-09-06T13:49:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、Promise定义"><a href="#一、Promise定义" class="headerlink" title="一、Promise定义"></a>一、Promise定义</h1>
-        
-          <a class="article-more-a" href="/2021/09/06/promise%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/06/promise%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -940,8 +370,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
