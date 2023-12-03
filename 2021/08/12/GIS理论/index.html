@@ -11,13 +11,14 @@
   <meta name="description" content="一.GIS概论及体系">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GIS理论">
-<meta property="og:url" content="http://example.com/2022/03/05/GIS%E7%90%86%E8%AE%BA/index.html">
+<meta property="og:url" content="http://example.com/2021/08/12/GIS%E7%90%86%E8%AE%BA/index.html">
 <meta property="og:site_name" content="吴晨光的个人博客">
 <meta property="og:description" content="一.GIS概论及体系">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/10.png">
-<meta property="article:published_time" content="2022-03-05T13:33:03.000Z">
-<meta property="article:modified_time" content="2023-11-29T15:50:17.380Z">
+<meta property="og:image" content="http://example.com/img/11.png">
+<meta property="article:published_time" content="2021-08-12T13:33:03.000Z">
+<meta property="article:modified_time" content="2023-12-03T11:32:47.237Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="GIS开发">
 <meta name="twitter:card" content="summary">
@@ -173,8 +174,8 @@
   
 
         
-        <a href="/2022/03/05/GIS%E7%90%86%E8%AE%BA/" class="archive-article-date">
-  	<time datetime="2022-03-05T13:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-05</time>
+        <a href="/2021/08/12/GIS%E7%90%86%E8%AE%BA/" class="archive-article-date">
+  	<time datetime="2021-08-12T13:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-12</time>
 </a>
         
       </header>
@@ -212,7 +213,7 @@
 <p>在城市级或小范围区域：局部高斯投影</p>
 <p><strong>互联网公众地图网站：Web墨卡托</strong></p>
 <p>卫星影像数据：UTM投影</p>
-<h3 id="墨卡托投影"><a href="#墨卡托投影" class="headerlink" title="墨卡托投影"></a>墨卡托投影</h3><p>墨卡托投影，是一种<strong>等角正切圆柱投影</strong>，原理是假设地球被围在一中空圆柱体里，其标准线与援助相切接触，再假想地球中心有一盏灯，把球面上的图形投影到圆柱体上，把圆柱体展开。</p>
+<h3 id="墨卡托投影"><a href="#墨卡托投影" class="headerlink" title="墨卡托投影"></a>墨卡托投影</h3><p>墨卡托投影，是一种<strong>等角正切圆柱投影</strong>，原理是假设地球被围在一中空圆柱体里，其标准线与圆柱相切接触，再假想地球中心有一盏灯，把球面上的图形投影到圆柱体上，把圆柱体展开。</p>
 <img src="/img/10.png" alt="10" style="zoom:75%;" />
 
 <h3 id="Web墨卡托投影"><a href="#Web墨卡托投影" class="headerlink" title="Web墨卡托投影"></a>Web墨卡托投影</h3><p>Web Mercator（墨卡托）是由Google最先发明的。投影过程中，将表示地球的参考椭球体近似的作为正球体处理。由于墨卡托投影当纬度接近两极时，y值趋近无穷大，为了方便，就把Y轴的取值范围也限定在X相同范围，是正方形地图，形成了Web Mercator 投影。</p>
@@ -223,7 +224,131 @@
 <p>对应纬度范围是：</p>
 <p>最小（-180, -85.05112877980659）</p>
 <p>最大（ 180,  85.05112877980659）</p>
-<h1 id="三-GIS数据"><a href="#三-GIS数据" class="headerlink" title="三.GIS数据"></a>三.GIS数据</h1><h1 id="四-GIS服务"><a href="#四-GIS服务" class="headerlink" title="四.GIS服务"></a>四.GIS服务</h1><h1 id="五-GIS应用开发"><a href="#五-GIS应用开发" class="headerlink" title="五.GIS应用开发"></a>五.GIS应用开发</h1><h1 id="六-GIS的发展与未来"><a href="#六-GIS的发展与未来" class="headerlink" title="六.GIS的发展与未来"></a>六.GIS的发展与未来</h1>
+<h3 id="当前通用的一些坐标系标准"><a href="#当前通用的一些坐标系标准" class="headerlink" title="当前通用的一些坐标系标准"></a>当前通用的一些坐标系标准</h3><p>国际：</p>
+<p><strong>WGS84坐标系：</strong></p>
+<p>目前最通用的标准坐标系，平时常说的经度纬度、从GPS设备、智能手机中取出的数据的坐标系、国际地图提供商使用的坐标系都是这个坐标系</p>
+<p>国内：</p>
+<p>1.1985国家高程基准</p>
+<p>2.两个已弃用参心坐标系：北京54、西安80</p>
+<p>3.<strong>2000国家大地坐标系（CGCS2000）</strong></p>
+<p>4.<strong>火星坐标系（GCJ-02）</strong></p>
+<p><strong>PS：</strong></p>
+<p>WGS84的WKID：<strong>4326</strong></p>
+<p>CGCS2000的WKID：<strong>4490</strong></p>
+<p>WGS84 与 CGCS2000 相差几个厘米，对于一般工程测量，可以认为两者是一致的。</p>
+<h3 id="火星坐标系（GCJ-02）"><a href="#火星坐标系（GCJ-02）" class="headerlink" title="火星坐标系（GCJ-02）"></a>火星坐标系（GCJ-02）</h3><p>处于国家安全考虑，国内所有导航电子地图必须使用国家测绘局指定的加密坐标系统，即<strong>将一个真实的经纬度坐标加密成一个不正确的经纬度坐标</strong>，称为火星坐标系（GCJ-02）。当我们使用的数据和服务不同时，就产生了我们时常说的<strong>偏移</strong>和<strong>纠偏</strong>的问题。</p>
+<table>
+<thead>
+<tr>
+<th>坐标系</th>
+<th>地图服务商</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标准坐标系</td>
+<td>国外地图服务，天地图（属于CGCS2000，但可以等同于WGS84）</td>
+</tr>
+<tr>
+<td>火星偏移坐标系</td>
+<td>IOS地图（其实是高德）、Gogole地图、腾讯地图、高德地图等</td>
+</tr>
+<tr>
+<td>其他偏移坐标系</td>
+<td>百度地图、搜狗搜狐地图（在火星坐标系上二次加密）</td>
+</tr>
+</tbody></table>
+<p>从设备获取经纬度(GPS)坐标：</p>
+<p>(1)如果使用的是ios原生定位库，那么获得的坐标是WGS84</p>
+<p>(2)如果使用的是高德sdk，那么获取的坐标是GCJ02</p>
+<p>(3)如果使用的是百度地图sdk，那么可以获得百度坐标（bd09）或者火星坐标系（GCJ02），默认是bd09</p>
+<h3 id="坐标系转换"><a href="#坐标系转换" class="headerlink" title="坐标系转换"></a>坐标系转换</h3><p>坐标系转换主要是GCS转GCS，GCS转PCS就是投影，PCS转PCS是重投影。</p>
+<p>GCS转GCS属于空间解析几何的空间直角坐标系的移动、转换问题，即仿射变换。</p>
+<h2 id="常见概念"><a href="#常见概念" class="headerlink" title="常见概念"></a>常见概念</h2><p><strong>1.比例尺</strong></p>
+<p>即地图上的一厘米代表实际上的多少厘米。</p>
+<p><strong>2.分辨率</strong></p>
+<p>代表当前地图范围内，1像素代表多少地图单位，与dpi有关系。</p>
+<p><strong>3.WKID与EPSG</strong></p>
+<p>WKID即Well Known ID；EPSG是管理这些ID号的组织。如WKID&#x3D;4326，即WGS84这个地理坐标系统的ID。</p>
+<p>常见EPSG：</p>
+<p><strong>EPSG4326</strong>  WGS84 美国GPS使用的全球地理坐标系统</p>
+<p><strong>EPSG4490</strong>  CGCS2000 中国国家2000地理坐标系统</p>
+<p><strong>EPSG3857</strong>  Web Mercator投影</p>
+<h1 id="三-GIS数据"><a href="#三-GIS数据" class="headerlink" title="三.GIS数据"></a>三.GIS数据</h1><h2 id="地图数据结构构成"><a href="#地图数据结构构成" class="headerlink" title="地图数据结构构成"></a>地图数据结构构成</h2><p>GIS地图数据是由不同图层构成，各图层内的数据可以分为矢量或栅格数据。</p>
+<img src="/img/11.png" alt="11" style="zoom:75%;" />
+
+<h2 id="地图图层：WebGIS的地图结构"><a href="#地图图层：WebGIS的地图结构" class="headerlink" title="地图图层：WebGIS的地图结构"></a>地图图层：WebGIS的地图结构</h2><p>二维WebGIS的地图结构：</p>
+<p>栅格底图图层</p>
+<p>矢量图层</p>
+<p>三维WebGIS的地图结构：</p>
+<p>地形图层</p>
+<p>栅格底图图层</p>
+<p>三维模型层</p>
+<p>矢量图层</p>
+<h2 id="常见的栅格数据：切片（瓦片）底图"><a href="#常见的栅格数据：切片（瓦片）底图" class="headerlink" title="常见的栅格数据：切片（瓦片）底图"></a>常见的栅格数据：切片（瓦片）底图</h2><p>基本我们平常所接触的地图的底图都是瓦片地图。</p>
+<h3 id="瓦片地图特征"><a href="#瓦片地图特征" class="headerlink" title="瓦片地图特征"></a>瓦片地图特征</h3><p>瓦片<strong>分辨率为256×256</strong></p>
+<p><strong>最小地图等级是0</strong>，此时世界地图只由一张瓦片组成</p>
+<p>具有唯一的瓦片等级（z）和瓦片行列坐标编号（X，Y）</p>
+<p>瓦片等级越高，组成世界地图的瓦片数越多，可以展示的地图越详细</p>
+<p>某一瓦片等级地图的瓦片是由低一级的各瓦片<strong>切割成的4个瓦片</strong>组成，形成瓦片金字塔</p>
+<h2 id="矢量数据构成：要素Feature"><a href="#矢量数据构成：要素Feature" class="headerlink" title="矢量数据构成：要素Feature"></a>矢量数据构成：要素Feature</h2><p>矢量数据的单个对象称之为要素，即矢量图层内是由多个要素构成的，而要素主要分为点、线、面等类型。</p>
+<h2 id="GIS数据常见文件格式"><a href="#GIS数据常见文件格式" class="headerlink" title="GIS数据常见文件格式"></a>GIS数据常见文件格式</h2><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>常见文件格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DEM地形数据</td>
+<td>tif，dem</td>
+</tr>
+<tr>
+<td>DOM影像数据</td>
+<td>tif，img</td>
+</tr>
+<tr>
+<td>矢量数据</td>
+<td>shp，kml，geojson，dxf&#x2F;dwg</td>
+</tr>
+<tr>
+<td>三维模型</td>
+<td>倾斜摄影osgb，人工建模obj、dae，BIM数据dvt、dgn，点云las，ply</td>
+</tr>
+</tbody></table>
+<h2 id="GeoJSON"><a href="#GeoJSON" class="headerlink" title="GeoJSON"></a>GeoJSON</h2><p>GeoJSON是适合于Web下对各种地理数据结构进行编码的格式，基于Javascript对象表示法的地理空间信息数据交换格式。</p>
+<p>GeoJSON将所有地理要素分为Point、MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon、GeometryCollection。</p>
+<h2 id="GIS数据存储"><a href="#GIS数据存储" class="headerlink" title="GIS数据存储"></a>GIS数据存储</h2><p>业务数据：MySQL等普通数据库</p>
+<p>栅格数据：MongoDB</p>
+<p>矢量数据：PostGIS</p>
+<p>少量数据时：</p>
+<p>1.栅格数据、无需编辑的矢量文件数据，可以直接存放在计算机硬盘文件夹中</p>
+<p>2.在业务数据库相关表中加入经度x、纬度y、高度z字段后，直接将矢量数据存放在业务数据库中。</p>
+<h1 id="四-GIS服务"><a href="#四-GIS服务" class="headerlink" title="四.GIS服务"></a>四.GIS服务</h1><p>目前常用的GIS服务有：</p>
+<p>1.ArcGIS Server发布的服务</p>
+<p>2.OGC标准WMS、WMTS、WFS服务（常用GeoServer发布）</p>
+<p>3.静态资源数据服务（直接web容器发布）</p>
+<p>4.互联网在线地图服务</p>
+<h1 id="五-GIS应用开发"><a href="#五-GIS应用开发" class="headerlink" title="五.GIS应用开发"></a>五.GIS应用开发</h1><h2 id="开发框架分类"><a href="#开发框架分类" class="headerlink" title="开发框架分类"></a>开发框架分类</h2><table>
+<thead>
+<tr>
+<th>平台</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>专业商业GIS平台</td>
+<td>ArcGIS、SuperMap、Skyline等</td>
+</tr>
+<tr>
+<td>在线图商的公众SDK</td>
+<td>百度、高德、谷歌、天地图、Mapbox等</td>
+</tr>
+<tr>
+<td>开源GIS平台</td>
+<td>Openlayers、Leaflet、MapboxGL、Cesium等</td>
+</tr>
+</tbody></table>
+
       
 
       
@@ -313,7 +438,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/05/GIS%E7%90%86%E8%AE%BA/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/08/12/GIS%E7%90%86%E8%AE%BA/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -327,18 +452,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/04/19/%E5%9F%BA%E4%BA%8Eleaflet%E7%9A%84%E4%BA%8C%E7%BB%B4GIS%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/09/06/promise%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          基于leaflet的二维GIS开发笔记
+          promise异步编程
         
       </div>
     </a>
   
   
-    <a href="/2022/02/16/styled-components%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">styled-components使用</div>
+    <a href="/2021/07/26/js%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js函数进阶</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -464,15 +589,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">GIS开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GIS开发</a>
               </li>
             
             <div class="clearfix"></div>
