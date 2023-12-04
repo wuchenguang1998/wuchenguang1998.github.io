@@ -16,7 +16,7 @@
 <meta property="og:description" content="最近在单位着手开发一个新项目，需要用到MapboxGL，于是开一篇新的博客，记录一些开发时候的笔记。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-11-06T13:45:15.000Z">
-<meta property="article:modified_time" content="2023-12-03T16:15:48.923Z">
+<meta property="article:modified_time" content="2023-12-04T15:55:38.320Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="GIS开发">
 <meta name="twitter:card" content="summary">
@@ -179,9 +179,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近在单位着手开发一个新项目，需要用到MapboxGL，于是开一篇新的博客，记录一些开发时候的笔记。<span id="more"></span></p>
+        <p>最近在单位着手开发一个新项目，需要用到<a target="_blank" rel="noopener" href="https://docs.mapbox.com/mapbox-gl-js/guides/">MapboxGL</a>，于是开一篇新的博客，记录一些开发时候的笔记。<span id="more"></span></p>
 <h2 id="一-去除accessToken验证"><a href="#一-去除accessToken验证" class="headerlink" title="一.去除accessToken验证"></a>一.去除accessToken验证</h2><p>因为该项目是内网使用，不访问互联网，不使用mapbox在线地图，所以需要去除Mapbox的accessToken验证，进行离线本地化。</p>
 <p>具体步骤是修改mapbox-gl.js，搜索if(t&amp;&amp;(t.message&#x3D;&#x3D;&#x3D;e.AUTH_ERR_MSG||401&#x3D;&#x3D;&#x3D;t.status))，将这段代码替换成if(t&amp;&amp;false)就可以了。另外使用官网的调用示例来初始化地图时，把style属性也删掉，否则还是会触发accessToken验证。</p>
+<h2 id="二-字体本地化部署"><a href="#二-字体本地化部署" class="headerlink" title="二.字体本地化部署"></a>二.字体本地化部署</h2><p>渲染文字标注时，遇到报错：use of “text-field” requires a style “glyphs” property。这是因为mapbox使用的字体是pbf格式，由于使用的是mapbox离线版本，所以需要字体本地化部署。</p>
+<p>具体步骤：将mapbox的在线字文件引入到本地，放到public文件夹下，并在初始化地图时加入以下声明：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">glyphs</span>: <span class="string">&quot;./glyphs/mapbox/&#123;fontstack&#125;/&#123;range&#125;.pbf&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果需要用到mapbox图标，也需要进行图标的本地化部署。</p>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.mchweb.net/mcbach/1650931988617535488.html">如何在 mapbox 中使用浏览器的字体</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/CatalpaWoo/article/details/129412464">基于离线部署Mapbox的地理信息系统</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hfpjl/article/details/108406454?spm=1001.2014.3001.5501">vue中Mapbox的字体本地化部署解决方案</a></p>
 
       
 
