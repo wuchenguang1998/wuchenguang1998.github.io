@@ -16,7 +16,7 @@
 <meta property="og:description" content="最近在单位着手开发一个新项目，需要用到MapboxGL，于是开一篇新的博客，记录一些开发时候的笔记。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-11-06T13:45:15.000Z">
-<meta property="article:modified_time" content="2023-12-04T15:59:51.506Z">
+<meta property="article:modified_time" content="2023-12-04T16:32:15.869Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="GIS开发">
 <meta name="twitter:card" content="summary">
@@ -180,18 +180,27 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近在单位着手开发一个新项目，需要用到<a target="_blank" rel="noopener" href="https://docs.mapbox.com/mapbox-gl-js/guides/">MapboxGL</a>，于是开一篇新的博客，记录一些开发时候的笔记。<span id="more"></span></p>
-<h2 id="一-去除accessToken验证"><a href="#一-去除accessToken验证" class="headerlink" title="一.去除accessToken验证"></a>一.去除accessToken验证</h2><p>因为该项目是内网使用，不访问互联网，不使用mapbox在线地图，所以需要去除Mapbox的accessToken验证，进行离线本地化。</p>
-<p>具体步骤是修改mapbox-gl.js，搜索if(t&amp;&amp;(t.message&#x3D;&#x3D;&#x3D;e.AUTH_ERR_MSG||401&#x3D;&#x3D;&#x3D;t.status))，将这段代码替换成if(t&amp;&amp;false)就可以了。另外使用官网的调用示例来初始化地图时，把style属性也删掉，否则还是会触发accessToken验证。</p>
-<h2 id="二-字体本地化部署"><a href="#二-字体本地化部署" class="headerlink" title="二.字体本地化部署"></a>二.字体本地化部署</h2><p>渲染文字标注时，遇到报错：use of “text-field” requires a style “glyphs” property。这是因为mapbox使用的字体是pbf格式，由于使用的是mapbox离线版本，所以需要字体本地化部署。</p>
-<p>具体步骤：将mapbox的在线字文件引入到本地，放到public文件夹下，并在初始化地图时加入以下声明：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">glyphs</span>: <span class="string">&quot;./glyphs/mapbox/&#123;fontstack&#125;/&#123;range&#125;.pbf&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="一-去除-accessToken-验证"><a href="#一-去除-accessToken-验证" class="headerlink" title="一.去除 accessToken 验证"></a>一.去除 accessToken 验证</h2><p>因为该项目是内网使用，不访问互联网，不使用 mapbox 在线地图，所以需要去除 Mapbox 的 accessToken 验证，进行离线本地化。</p>
+<p>具体步骤是修改 mapbox-gl.js，搜索 if(t&amp;&amp;(t.message&#x3D;&#x3D;&#x3D;e.AUTH_ERR_MSG||401&#x3D;&#x3D;&#x3D;t.status))，将这段代码替换成 if(t&amp;&amp;false)就可以了。另外使用官网的调用示例来初始化地图时，把 style 属性也删掉，否则还是会触发 accessToken 验证。</p>
+<h2 id="二-字体本地化部署"><a href="#二-字体本地化部署" class="headerlink" title="二.字体本地化部署"></a>二.字体本地化部署</h2><p>渲染文字标注时，遇到报错：use of “text-field” requires a style “glyphs” property。这是因为 mapbox 使用的字体是 pbf 格式，由于使用的是 mapbox 离线版本，所以需要字体本地化部署。</p>
+<p>具体步骤：将 mapbox 的在线字文件引入到本地，放到 public 文件夹下，并在初始化地图时加入以下声明：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">glyphs</span>: <span class="string">&#x27;./glyphs/mapbox/&#123;fontstack&#125;/&#123;range&#125;.pbf&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <p>刚开始我还遇到报错：Uncaught Error: Unimplemented type: 4，折腾了好一阵子，最后对比控制台的字体请求，发现是字体文件名没有对应上，将文件名改成和控制台请求的一致即可。</p>
-<p><strong>PS：</strong>如果需要用到mapbox图标，也需要进行图标的本地化部署。</p>
+<p><strong>PS：</strong>如果需要用到 mapbox 图标，也需要进行图标的本地化部署。</p>
 <p>参考链接：</p>
 <p><a target="_blank" rel="noopener" href="https://www.mchweb.net/mcbach/1650931988617535488.html">如何在 mapbox 中使用浏览器的字体</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/CatalpaWoo/article/details/129412464">基于离线部署Mapbox的地理信息系统</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hfpjl/article/details/108406454?spm=1001.2014.3001.5501">vue中Mapbox的字体本地化部署解决方案</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/CatalpaWoo/article/details/129412464">基于离线部署 Mapbox 的地理信息系统</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hfpjl/article/details/108406454?spm=1001.2014.3001.5501">vue 中 Mapbox 的字体本地化部署解决方案</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29808089/article/details/109736870">MapBoxGL message: “Unimplemented type: 4“</a></p>
+<h2 id="三-初始化地图"><a href="#三-初始化地图" class="headerlink" title="三.初始化地图"></a>三.初始化地图</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> mapboxgl.<span class="title class_">Map</span>(&#123;</span><br><span class="line">  <span class="attr">container</span>: <span class="string">&#x27;map&#x27;</span>,</span><br><span class="line">  <span class="attr">style</span>: &#123;</span><br><span class="line">    <span class="attr">version</span>: <span class="number">8</span>,</span><br><span class="line">    <span class="attr">sources</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;raster-tiles&#x27;</span>: &#123;</span><br><span class="line">        <span class="comment">// attribution: attribution,</span></span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;raster&#x27;</span>,</span><br><span class="line">        <span class="attr">tiles</span>: [<span class="string">&#x27;https://xxx.xxx.xxx/xxx/zxyTileImage.png?z=&#123;z&#125;&amp;x=&#123;x&#125;&amp;y=&#123;y&#125;&#x27;</span>],</span><br><span class="line">        <span class="attr">tileSize</span>: <span class="number">256</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">layers</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="string">&#x27;simple-tiles&#x27;</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;raster&#x27;</span>,</span><br><span class="line">        <span class="attr">source</span>: <span class="string">&#x27;raster-tiles&#x27;</span>,</span><br><span class="line">        <span class="attr">minzoom</span>: <span class="number">3</span>,</span><br><span class="line">        <span class="attr">maxzoom</span>: <span class="number">22</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">center</span>: [<span class="number">120.143</span>, <span class="number">30.236</span>], <span class="comment">// 地图初始中心点</span></span><br><span class="line">  <span class="attr">zoom</span>: <span class="number">3</span>, <span class="comment">// 地图初始缩放级别</span></span><br><span class="line">  <span class="attr">minZoom</span>: <span class="number">3</span>,</span><br><span class="line">  <span class="attr">maxZoom</span>: <span class="number">12</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-渲染-marker"><a href="#四-渲染-marker" class="headerlink" title="四.渲染 marker"></a>四.渲染 marker</h2><h3 id="1-单个-marker（使用默认图标）"><a href="#1-单个-marker（使用默认图标）" class="headerlink" title="1.单个 marker（使用默认图标）"></a>1.单个 marker（使用默认图标）</h3><p>此时marker在地图上是以div标签进行渲染的，性能较差，不适合海量点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> mapboxgl.<span class="title class_">Marker</span>().<span class="title function_">setLngLat</span>([<span class="number">120.143</span>, <span class="number">30.236</span>]).<span class="title function_">addTo</span>(map);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-单个marker（使用自定义图标）"><a href="#2-单个marker（使用自定义图标）" class="headerlink" title="2.单个marker（使用自定义图标）"></a>2.单个marker（使用自定义图标）</h3><p>此时marker在地图上是以img标签进行渲染的，性能较差，不适合海量点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> el = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;img&#x27;</span>); <span class="comment">//自定义标记点图片</span></span><br><span class="line">el.<span class="property">className</span> = <span class="string">&#x27;marker&#x27;</span>;</span><br><span class="line">el.<span class="property">src</span> = <span class="string">&#x27;./imgs/marker.jpg&#x27;</span>; <span class="comment">//图片路径</span></span><br><span class="line"><span class="keyword">new</span> mapboxgl.<span class="title class_">Marker</span>(el).<span class="title function_">setLngLat</span>([<span class="number">120.143</span>, <span class="number">30.236</span>]).<span class="title function_">addTo</span>(map);</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -424,11 +433,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GIS开发</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">GIS开发</a>
               </li>
              
               <li class="article-tag-list-item">
