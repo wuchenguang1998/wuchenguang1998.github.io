@@ -16,7 +16,7 @@
 <meta property="og:description" content="使用的是electron-vite进行快速搭建项目">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-13T13:28:03.000Z">
-<meta property="article:modified_time" content="2024-03-24T16:03:01.410Z">
+<meta property="article:modified_time" content="2024-03-26T15:56:24.610Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -192,6 +192,15 @@
 <p>运行项目，接着就能看到新的electron应用</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
 
+<p>如果需要，可以去除打包前ts检查。将package.json文件的”build”: “npm run typecheck &amp;&amp; electron-vite build”改成”build”: “electron-vite build”</p>
+<p>打包成win系统安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build:win</span><br></pre></td></tr></table></figure>
+
+<p>打包有可能报错：Sub items Errors: 2</p>
+<p>解决方式：使用<strong>管理员身份</strong>运行PowerShell，在项目目录执行打包命令;或者以管理员身份运行vscode</p>
+<p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/vifaceeeeee/article/details/134693524">electron builder打包时，出现errorOut&#x3D;ERROR: Cannot create symbolic link</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yuyanjing123456789/article/details/134260604">设置vscode的终端为管理员权限</a></p>
 <h3 id="2-编辑器配置"><a href="#2-编辑器配置" class="headerlink" title="2.编辑器配置"></a>2.编辑器配置</h3><p>1.vscode安装并启用eslint和prettier插件</p>
 <p>2.vscode编辑器的settings.json也要配置格式化</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;editor.formatOnSave&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span> <span class="comment">// 保存时格式化</span></span><br></pre></td></tr></table></figure>
@@ -431,11 +440,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GIS开发</a>
+                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JS基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">GIS开发</a>
               </li>
              
               <li class="article-tag-list-item">
