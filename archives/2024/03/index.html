@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>electron笔记 | 吴晨光的个人博客</title>
+  <title>Archives: 2024/3 | 吴晨光的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用的是electron-vite进行快速搭建项目">
-<meta property="og:type" content="article">
-<meta property="og:title" content="electron笔记">
-<meta property="og:url" content="http://example.com/2024/01/13/electron%E7%AC%94%E8%AE%B0/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="吴晨光的个人博客">
+<meta property="og:url" content="http://example.com/archives/2024/03/index.html">
 <meta property="og:site_name" content="吴晨光的个人博客">
-<meta property="og:description" content="使用的是electron-vite进行快速搭建项目">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-01-13T13:28:03.000Z">
-<meta property="article:modified_time" content="2024-05-14T14:36:59.299Z">
 <meta property="article:author" content="吴晨光">
-<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="吴晨光的个人博客" type="application/atom+xml">
@@ -155,134 +150,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-electron笔记" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      electron笔记
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2024" class="archive-year">2024</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2024/03/27/svg%E3%80%81canvas%E3%80%81fabric-js%E7%9F%A5%E8%AF%86%E7%82%B9%E5%90%88%E9%9B%86/" class="archive-article-date">
+  	<time datetime="2024-03-27T14:24:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-27</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2024/03/27/svg%E3%80%81canvas%E3%80%81fabric-js%E7%9F%A5%E8%AF%86%E7%82%B9%E5%90%88%E9%9B%86/">svg、canvas、fabric.js知识点合集</a>
     </h1>
   
 
-        
-        <a href="/2024/01/13/electron%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2024-01-13T13:28:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用的是<a target="_blank" rel="noopener" href="https://cn.electron-vite.org/">electron-vite</a>进行快速搭建项目<span id="more"></span></p>
-<h2 id="一-环境搭建"><a href="#一-环境搭建" class="headerlink" title="一.环境搭建"></a>一.环境搭建</h2><h3 id="1-初始化项目"><a href="#1-初始化项目" class="headerlink" title="1.初始化项目"></a>1.初始化项目</h3><p>首先全局安装 pnpm（非必须）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i pnpm -g</span><br></pre></td></tr></table></figure>
-
-<p>使用 electron-vite 脚手架创建项目</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm create @quick-start/electron</span><br></pre></td></tr></table></figure>
-
-<p>并安装依赖包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm install</span><br></pre></td></tr></table></figure>
-
-<p>运行项目，接着就能看到新的 electron 应用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-
-<p>如果需要，可以去除打包前 ts 检查。将 package.json 文件的”build”: “npm run typecheck &amp;&amp; electron-vite build”改成”build”: “electron-vite build”</p>
-<p>打包成 win 系统安装包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build:win</span><br></pre></td></tr></table></figure>
-
-<p>打包有可能报错：Sub items Errors: 2</p>
-<p>解决方式：使用<strong>管理员身份</strong>运行 PowerShell，在项目目录执行打包命令;或者以管理员身份运行 vscode</p>
-<p>参考文章：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/vifaceeeeee/article/details/134693524">electron builder 打包时，出现 errorOut&#x3D;ERROR: Cannot create symbolic link</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yuyanjing123456789/article/details/134260604">设置 vscode 的终端为管理员权限</a></p>
-<h3 id="2-编辑器配置"><a href="#2-编辑器配置" class="headerlink" title="2.编辑器配置"></a>2.编辑器配置</h3><p>1.vscode 安装并启用 eslint 和 prettier 插件</p>
-<p>2.vscode 编辑器的 settings.json 也要配置格式化</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;editor.formatOnSave&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span> <span class="comment">// 保存时格式化</span></span><br></pre></td></tr></table></figure>
-
-<p>3.项目根目录.vscode 文件夹的 settings.json 也要配置对 vue 文件的格式化</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;[vue]&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;editor.defaultFormatter&quot;</span><span class="punctuation">:</span> <span class="string">&quot;esbenp.prettier-vscode&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="二-快速开始"><a href="#二-快速开始" class="headerlink" title="二.快速开始"></a>二.快速开始</h2><p>Electron 应用程序的入口都是 main 文件（在 package.json 指定），这个文件控制了主进程，它运行在一个完整的 Node.js 环境中，负责控制应用的生命周期，显示原生界面，执行特殊操作并管理渲染器进程</p>
-<p>使用 BrowserWindow 创建和管理窗口</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">  <span class="attr">width</span>: <span class="number">900</span>,</span><br><span class="line">  <span class="attr">height</span>: <span class="number">670</span>,</span><br><span class="line">  <span class="attr">show</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 创建窗口时默认具备系统菜单，可以设置autoHideMenuBar隐藏</span></span><br><span class="line">  <span class="comment">// autoHideMenuBar: true,</span></span><br><span class="line">  <span class="comment">// 窗口始终置顶</span></span><br><span class="line">  <span class="attr">alwaysOnTop</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 标题栏是否开启，默认为true</span></span><br><span class="line">  <span class="comment">// frame: false,</span></span><br><span class="line">  <span class="comment">// 窗口透明度</span></span><br><span class="line">  <span class="comment">// transparent: true,</span></span><br><span class="line">  ...(process.<span class="property">platform</span> === <span class="string">&quot;linux&quot;</span> ? &#123; icon &#125; : &#123;&#125;),</span><br><span class="line">  <span class="attr">webPreferences</span>: &#123;</span><br><span class="line">    <span class="attr">preload</span>: <span class="title function_">join</span>(__dirname, <span class="string">&quot;../preload/index.js&quot;</span>),</span><br><span class="line">    <span class="attr">sandbox</span>: <span class="literal">false</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>控制缩放比例</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 控制拖放比例,1代表1：1</span></span><br><span class="line">mainWindow.<span class="title function_">setAspectRatio</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<p>开启控制台</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开发环境控制台自动开启</span></span><br><span class="line"><span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&quot;development&quot;</span>) &#123;</span><br><span class="line">  mainWindow.<span class="property">webContents</span>.<span class="title function_">toggleDevTools</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三-进程模型"><a href="#三-进程模型" class="headerlink" title="三.进程模型"></a>三.进程模型</h2><h3 id="1-多进程模型"><a href="#1-多进程模型" class="headerlink" title="1.多进程模型"></a>1.多进程模型</h3><p>每个标签页在自己的进程中渲染</p>
-<h3 id="2-主进程"><a href="#2-主进程" class="headerlink" title="2.主进程"></a>2.主进程</h3><p>Electron 的主进程是一个拥有着完全操作系统访问权限的 Node.js 环境</p>
-<h3 id="3-渲染器进程"><a href="#3-渲染器进程" class="headerlink" title="3.渲染器进程"></a>3.渲染器进程</h3><p>应用中的每个页面都在一个单独的进程中运行，这些进程被称为渲染器(renderer)进程</p>
-<p>Electron 的主进程和渲染进程有着清楚的分工并且不可互换，渲染器进程要想与 Node.js 和 Electron 的原生桌面功能进行交互，需要通过进程进程间通信(IPC)</p>
-<h3 id="4-预加载脚本"><a href="#4-预加载脚本" class="headerlink" title="4.预加载脚本"></a>4.预加载脚本</h3><p>预加载脚本可以将 Electron 的不同类型的进程桥接在一起，在渲染器加载网页之前注入。可以通过 contextBridge 将特权 API 暴露至渲染进程中。</p>
-<p>预加载脚本与其所附着的渲染器在共享着一个全局 window 对象，但并不能从中直接附加任何变动到 window 之上，因为 contextIsolation 是默认的</p>
-<p>语境隔离（Context Isolation）意味着预加载脚本与渲染器的主要运行环境是隔离开来的，以避免泄漏任何具特权的 API 到您的网页内容代码中.</p>
-<p>因此需要使用 contextBridge 模块来安全地实现交互。但并不是 contextBridge 就是一定安全的，应该避免暴露没有任何参数过滤的特权 API</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误使用，不安全</span></span><br><span class="line">contextBridge.<span class="title function_">exposeInMainWorld</span>(<span class="string">&quot;myAPI&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">send</span>: ipcRenderer.<span class="property">send</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="四-进程通信"><a href="#四-进程通信" class="headerlink" title="四.进程通信"></a>四.进程通信</h2><p>可以使用 Electron 的 ipcMain 模块和 ipcRenderer 模块来进行进程间通信(IPC)</p>
-<h3 id="模式-1：渲染器进程到主进程（单向）"><a href="#模式-1：渲染器进程到主进程（单向）" class="headerlink" title="模式 1：渲染器进程到主进程（单向）"></a>模式 1：渲染器进程到主进程（单向）</h3><p>可以使用 ipcRenderer.send API 发送消息，然后使用 ipcMain.on API 接收</p>
-<p>渲染器进程：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=&quot;ts&quot;&gt;</span><br><span class="line">// 修改窗口标题</span><br><span class="line">const changeTitle = () =&gt; &#123;</span><br><span class="line">  (window as any).electronAPI.setTitle(&quot;渲染器到主进程&quot;);</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;进程通信&lt;/div&gt;</span><br><span class="line">  &lt;button @click=&quot;changeTitle&quot;&gt;</span><br><span class="line">    渲染器进程到主进程单向（send, on）：修改标题</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-<p>预加载脚本：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">contextBridge.<span class="title function_">exposeInMainWorld</span>(<span class="string">&quot;electronAPI&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">setTitle</span>: <span class="function">(<span class="params">title</span>) =&gt;</span> ipcRenderer.<span class="title function_">send</span>(<span class="string">&quot;set-title&quot;</span>, title),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>主进程：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">whenReady</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  ipcMain.<span class="title function_">on</span>(<span class="string">&quot;set-title&quot;</span>, <span class="function">(<span class="params">event, title</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> webContents = event.<span class="property">sender</span>;</span><br><span class="line">    <span class="keyword">const</span> win = <span class="title class_">BrowserWindow</span>.<span class="title function_">fromWebContents</span>(webContents);</span><br><span class="line">    win &amp;&amp; win.<span class="title function_">setTitle</span>(title);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="模式-2：渲染器进程到主进程（双向）"><a href="#模式-2：渲染器进程到主进程（双向）" class="headerlink" title="模式 2：渲染器进程到主进程（双向）"></a>模式 2：渲染器进程到主进程（双向）</h3><p>可以通过将 ipcRenderer.invoke 与 ipcMain.handle 搭配使用来完成</p>
-<p>渲染器进程</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=&quot;ts&quot;&gt;</span><br><span class="line">// 打开文件</span><br><span class="line">const openFile = async () =&gt; &#123;</span><br><span class="line">  const filePath = await (window as any).electronAPI.openFile();</span><br><span class="line">  console.log(filePath);</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;进程通信&lt;/div&gt;</span><br><span class="line">  &lt;button @click=&quot;openFile&quot;&gt;</span><br><span class="line">    渲染器进程到主进程双向（invoke, handle）：打开文件</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-<p>预加载脚本：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">contextBridge.<span class="title function_">exposeInMainWorld</span>(<span class="string">&quot;electronAPI&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">openFile</span>: <span class="function">() =&gt;</span> ipcRenderer.<span class="title function_">invoke</span>(<span class="string">&quot;dialog:openFile&quot;</span>),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>主进程：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">handleFileOpen</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; canceled, filePaths &#125; = <span class="keyword">await</span> dialog.<span class="title function_">showOpenDialog</span>(&#123;&#125;);</span><br><span class="line">  <span class="keyword">if</span> (!canceled) &#123;</span><br><span class="line">    <span class="keyword">return</span> filePaths[<span class="number">0</span>];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">whenReady</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  ipcMain.<span class="title function_">handle</span>(<span class="string">&quot;dialog:openFile&quot;</span>, handleFileOpen);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="模式-3：主进程到渲染器进程"><a href="#模式-3：主进程到渲染器进程" class="headerlink" title="模式 3：主进程到渲染器进程"></a>模式 3：主进程到渲染器进程</h3><p>可以通过将 webContents.send 与 ipcRenderer.on 搭配使用来完成</p>
-<p>主进程：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> menu = <span class="title class_">Menu</span>.<span class="title function_">buildFromTemplate</span>([</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">label</span>: <span class="string">&quot;操作计数&quot;</span>,</span><br><span class="line">    <span class="attr">submenu</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">click</span>: <span class="function">() =&gt;</span> mainWindow.<span class="property">webContents</span>.<span class="title function_">send</span>(<span class="string">&quot;update-counter&quot;</span>, <span class="number">1</span>),</span><br><span class="line">        <span class="attr">label</span>: <span class="string">&quot;增加&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">click</span>: <span class="function">() =&gt;</span> mainWindow.<span class="property">webContents</span>.<span class="title function_">send</span>(<span class="string">&quot;update-counter&quot;</span>, -<span class="number">1</span>),</span><br><span class="line">        <span class="attr">label</span>: <span class="string">&quot;减小&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">]);</span><br><span class="line"><span class="title class_">Menu</span>.<span class="title function_">setApplicationMenu</span>(menu);</span><br></pre></td></tr></table></figure>
-
-<p>预加载脚本：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">contextBridge.<span class="title function_">exposeInMainWorld</span>(<span class="string">&quot;electronAPI&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">onUpdateCounter</span>: <span class="function">(<span class="params">callback</span>) =&gt;</span></span><br><span class="line">    ipcRenderer.<span class="title function_">on</span>(<span class="string">&quot;update-counter&quot;</span>, <span class="function">(<span class="params">_event, value</span>) =&gt;</span> <span class="title function_">callback</span>(value)),</span><br><span class="line">  <span class="attr">counterValue</span>: <span class="function">(<span class="params">value</span>) =&gt;</span> ipcRenderer.<span class="title function_">send</span>(<span class="string">&quot;counter-value&quot;</span>, value),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>渲染器进程：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=&quot;ts&quot;&gt;</span><br><span class="line">// 计数器</span><br><span class="line">(window as any).electronAPI.onUpdateCounter((value) =&gt; &#123;</span><br><span class="line">  const oldValue = Number(state.count);</span><br><span class="line">  const newValue = oldValue + value;</span><br><span class="line">  state.count = newValue;</span><br><span class="line">  (window as any).electronAPI.counterValue(newValue);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;进程通信&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;主进程到渲染器进程：&#123;&#123; state.count &#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -294,115 +191,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2024/01/13/electron%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2024/03/27/svg%E3%80%81canvas%E3%80%81fabric-js%E7%9F%A5%E8%AF%86%E7%82%B9%E5%90%88%E9%9B%86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          svg、canvas、fabric.js知识点合集
-        
-      </div>
-    </a>
   
   
-    <a href="/2023/11/06/MapboxGL%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MapboxGL开发笔记</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -425,8 +226,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
