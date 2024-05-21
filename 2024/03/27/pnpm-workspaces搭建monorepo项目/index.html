@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://example.com/img/23.png">
 <meta property="og:image" content="http://example.com/img/24.png">
 <meta property="article:published_time" content="2024-03-27T14:20:07.000Z">
-<meta property="article:modified_time" content="2024-05-17T16:26:42.504Z">
+<meta property="article:modified_time" content="2024-05-21T14:40:02.363Z">
 <meta property="article:author" content="吴晨光">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -187,10 +187,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>很多开源框架都会用 monorepo 去管理项目<span id="more"></span>，比如前段时间我提交 PR 的项目 LogicFlow，用的是 lerna+workspaces 来进行项目管理，使得代码引用非常方便。</p>
-<p>平常公司开发项目其实也用得到，比如最近单位开发一个项目，包含边端和中心端两个工程，使用的 UI 库、积累的组件库、公共方法等，很多都是共用的，也计划采用 monorepo 的方式来组织代码，这样可以省去很多麻烦。</p>
-<p>以下是我整理的搭建 monorepo 的操作步骤</p>
-<h2 id="一-环境搭建"><a href="#一-环境搭建" class="headerlink" title="一.环境搭建"></a>一.环境搭建</h2><p>首先使用 nvm 切换 node 版本为 16.20.0</p>
+        <p>很多开源框架都会用 monorepo 去管理项目<span id="more"></span>，比如前段时间我提交 PR 的项目 LogicFlow，用的是 lerna + workspaces 来进行项目管理，使得代码引用非常方便。</p>
+<p>平常公司开发项目其实也用得到，最近单位开发一个项目，包含边端和中心端两个工程，使用的 UI 库、积累的组件库、公共方法等，很多都是共用的，也计划采用 monorepo 的方式来组织代码，这样可以省去很多麻烦。</p>
+<p>以下是我整理的搭建 monorepo 的操作步骤，采用的是 pnpm workspaces 方案</p>
+<h2 id="一-环境搭建"><a href="#一-环境搭建" class="headerlink" title="一.环境搭建"></a>一.环境搭建</h2><p>首先使用 nvm 切换 node 版本为 16.20.0，对应安装 pnpm8 的版本</p>
 <h3 id="1-1-新建-monorepo-vue-文件夹"><a href="#1-1-新建-monorepo-vue-文件夹" class="headerlink" title="1.1 新建 monorepo-vue 文件夹"></a>1.1 新建 monorepo-vue 文件夹</h3><h3 id="1-2-初始化项目"><a href="#1-2-初始化项目" class="headerlink" title="1.2 初始化项目"></a>1.2 初始化项目</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm init</span><br></pre></td></tr></table></figure>
 
 <p>会新增一个 package.json 文件，删掉里面的 mian、test</p>
@@ -207,7 +207,7 @@
 <p>分别创建名为 app-base、app1、app2 的 vue 项目</p>
 <img src="/img/15.png" alt="15" style="zoom:75%;" />
 
-<h3 id="1-6-在根目录的-package-json-增加-scripts、dependencies、devDependencies"><a href="#1-6-在根目录的-package-json-增加-scripts、dependencies、devDependencies" class="headerlink" title="1.6 在根目录的 package.json 增加 scripts、dependencies、devDependencies"></a>1.6 在根目录的 package.json 增加 scripts、dependencies、devDependencies</h3><p>在 packages 里随便一个项目复制过来；</p>
+<h3 id="1-6-在根目录的-package-json-增加-scripts、dependencies、devDependencies"><a href="#1-6-在根目录的-package-json-增加-scripts、dependencies、devDependencies" class="headerlink" title="1.6 在根目录的 package.json 增加 scripts、dependencies、devDependencies"></a>1.6 在根目录的 package.json 增加 scripts、dependencies、devDependencies</h3><p>scripts、dependencies、devDependencies 这三个属性，可以在 packages 里随便一个项目的 package.json 复制过来；</p>
 <p>然后再删掉 packages 下三个项目的 packages.json 下的 dependencies、devDependencies</p>
 <h3 id="1-7-根目录下安装依赖"><a href="#1-7-根目录下安装依赖" class="headerlink" title="1.7 根目录下安装依赖"></a>1.7 根目录下安装依赖</h3><p>运行安装命令，会自动安装子项目依赖</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm i</span><br></pre></td></tr></table></figure>
